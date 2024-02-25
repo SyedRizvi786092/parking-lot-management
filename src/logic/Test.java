@@ -1,6 +1,6 @@
 package logic;
 
-class Main{
+class Test{
     public static void main(String[] args) {
         int nFloors=4;
         int nSlotsPerFloor=6;
