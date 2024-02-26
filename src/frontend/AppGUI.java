@@ -6,8 +6,13 @@ package frontend;
 
 /**
  *
- * @author mudas
+ * @author Mojiz
  */
+
+import java.awt.*;
+import javax.imageio.*;
+import java.io.*;
+
 public class AppGUI extends javax.swing.JFrame {
 
     /**
@@ -25,6 +30,7 @@ public class AppGUI extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         loginPanel = new javax.swing.JPanel();
         loginBox = new javax.swing.JPanel();
@@ -34,8 +40,19 @@ public class AppGUI extends javax.swing.JFrame {
         pwText = new javax.swing.JPasswordField();
         loginButton = new javax.swing.JButton();
         errLabel = new javax.swing.JLabel();
+        appPanel = new javax.swing.JPanel();
+        imageLabel = new javax.swing.JLabel();
+        menuPanel = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        cardsPanel = new javax.swing.JPanel();
+        parkPanel = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("PARK IT");
+        setIconImage(img);
         setPreferredSize(new java.awt.Dimension(932, 699));
         setSize(new java.awt.Dimension(932, 699));
         getContentPane().setLayout(new java.awt.CardLayout());
@@ -45,9 +62,11 @@ public class AppGUI extends javax.swing.JFrame {
         loginBox.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(255, 255, 153), new java.awt.Color(153, 153, 153)), "Log in to your Account", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Bahnschrift", 1, 18))); // NOI18N
 
         uNameLabel.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        uNameLabel.setLabelFor(uNameText);
         uNameLabel.setText("Username:");
 
         pwLabel.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        pwLabel.setLabelFor(pwText);
         pwLabel.setText("Password:");
 
         uNameText.setToolTipText("Enter your username");
@@ -123,6 +142,78 @@ public class AppGUI extends javax.swing.JFrame {
 
         getContentPane().add(loginPanel, "card2");
 
+        imageLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Parking_Lot_Area.jpeg"))); // NOI18N
+        imageLabel.setToolTipText("WELCOME TO MULTI-STOREY VEHICLE PARKING SYSTEM");
+        imageLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 51), 2, true), "MULTI-STOREY VEHICLE PARKING SYSTEM", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.ABOVE_BOTTOM, new java.awt.Font("Bernard MT Condensed", 1, 36), new java.awt.Color(255, 255, 0))); // NOI18N
+
+        java.awt.GridBagLayout menuPanelLayout = new java.awt.GridBagLayout();
+        menuPanelLayout.columnWidths = new int[] {0};
+        menuPanelLayout.rowHeights = new int[] {0, 20, 0, 20, 0};
+        menuPanel.setLayout(menuPanelLayout);
+
+        jButton1.setText("jButton1");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        menuPanel.add(jButton1, gridBagConstraints);
+
+        jButton2.setText("jButton2");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        menuPanel.add(jButton2, gridBagConstraints);
+
+        jButton3.setText("jButton3");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        menuPanel.add(jButton3, gridBagConstraints);
+
+        cardsPanel.setLayout(new java.awt.CardLayout());
+
+        jLabel1.setText("Here, the \"Vehicle Parking Code\" will be written...");
+
+        javax.swing.GroupLayout parkPanelLayout = new javax.swing.GroupLayout(parkPanel);
+        parkPanel.setLayout(parkPanelLayout);
+        parkPanelLayout.setHorizontalGroup(
+            parkPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(parkPanelLayout.createSequentialGroup()
+                .addGap(277, 277, 277)
+                .addComponent(jLabel1)
+                .addContainerGap(289, Short.MAX_VALUE))
+        );
+        parkPanelLayout.setVerticalGroup(
+            parkPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(parkPanelLayout.createSequentialGroup()
+                .addGap(163, 163, 163)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(176, Short.MAX_VALUE))
+        );
+
+        cardsPanel.add(parkPanel, "card2");
+
+        javax.swing.GroupLayout appPanelLayout = new javax.swing.GroupLayout(appPanel);
+        appPanel.setLayout(appPanelLayout);
+        appPanelLayout.setHorizontalGroup(
+            appPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(imageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addGroup(appPanelLayout.createSequentialGroup()
+                .addComponent(menuPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cardsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        appPanelLayout.setVerticalGroup(
+            appPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(appPanelLayout.createSequentialGroup()
+                .addComponent(imageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(appPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(menuPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cardsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
+
+        getContentPane().add(appPanel, "card3");
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -156,7 +247,13 @@ public class AppGUI extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(AppGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
+        try {
+            File imageFile = new File("M:\\Coding\\Java\\Minor Project\\ParkingLotManagementSystem\\src\\images\\frameIcon1.png");
+            img = ImageIO.read(imageFile);
+        } catch (IOException exc) {
+            System.out.println("Cannot load image file!");
+        }
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -164,12 +261,22 @@ public class AppGUI extends javax.swing.JFrame {
             }
         });
     }
-
+    
+    static Image img;
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel appPanel;
+    private javax.swing.JPanel cardsPanel;
     private javax.swing.JLabel errLabel;
+    private javax.swing.JLabel imageLabel;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel loginBox;
     private javax.swing.JButton loginButton;
     private javax.swing.JPanel loginPanel;
+    private javax.swing.JPanel menuPanel;
+    private javax.swing.JPanel parkPanel;
     private javax.swing.JLabel pwLabel;
     private javax.swing.JPasswordField pwText;
     private javax.swing.JLabel uNameLabel;
