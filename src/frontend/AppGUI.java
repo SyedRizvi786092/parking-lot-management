@@ -40,14 +40,18 @@ public class AppGUI extends javax.swing.JFrame {
         pwText = new javax.swing.JPasswordField();
         loginButton = new javax.swing.JButton();
         errLabel = new javax.swing.JLabel();
+        loginPicLabel = new javax.swing.JLabel();
         appPanel = new javax.swing.JPanel();
         imageLabel = new javax.swing.JLabel();
         menuPanel = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        parkButton = new javax.swing.JButton();
+        releaseButton = new javax.swing.JButton();
+        viewButton = new javax.swing.JButton();
+        helpButton = new javax.swing.JButton();
+        logoutLabel = new javax.swing.JLabel();
+        setLabel = new javax.swing.JLabel();
         cardsPanel = new javax.swing.JPanel();
-        parkPanel = new javax.swing.JPanel();
+        viewPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -58,8 +62,10 @@ public class AppGUI extends javax.swing.JFrame {
         getContentPane().setLayout(new java.awt.CardLayout());
 
         loginPanel.setBackground(new java.awt.Color(255, 255, 153));
+        loginPanel.setPreferredSize(new java.awt.Dimension(932, 699));
 
         loginBox.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(255, 255, 153), new java.awt.Color(153, 153, 153)), "Log in to your Account", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Bahnschrift", 1, 18))); // NOI18N
+        loginBox.setPreferredSize(new java.awt.Dimension(522, 552));
 
         uNameLabel.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         uNameLabel.setLabelFor(uNameText);
@@ -81,6 +87,8 @@ public class AppGUI extends javax.swing.JFrame {
 
         errLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
+        loginPicLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/tray.png"))); // NOI18N
+
         javax.swing.GroupLayout loginBoxLayout = new javax.swing.GroupLayout(loginBox);
         loginBox.setLayout(loginBoxLayout);
         loginBoxLayout.setHorizontalGroup(
@@ -96,19 +104,24 @@ public class AppGUI extends javax.swing.JFrame {
                     .addComponent(pwText, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginBoxLayout.createSequentialGroup()
-                .addGap(130, 130, 130)
+                .addContainerGap(130, Short.MAX_VALUE)
                 .addGroup(loginBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginBoxLayout.createSequentialGroup()
                         .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(210, 210, 210))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginBoxLayout.createSequentialGroup()
                         .addComponent(errLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(130, 130, 130))))
+                        .addGap(130, 130, 130))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginBoxLayout.createSequentialGroup()
+                        .addComponent(loginPicLabel)
+                        .addGap(211, 211, 211))))
         );
         loginBoxLayout.setVerticalGroup(
             loginBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(loginBoxLayout.createSequentialGroup()
-                .addGap(136, 136, 136)
+                .addGap(73, 73, 73)
+                .addComponent(loginPicLabel)
+                .addGap(47, 47, 47)
                 .addGroup(loginBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(uNameLabel)
                     .addComponent(uNameText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -142,55 +155,115 @@ public class AppGUI extends javax.swing.JFrame {
 
         getContentPane().add(loginPanel, "card2");
 
+        appPanel.setPreferredSize(new java.awt.Dimension(932, 699));
+
         imageLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Parking_Lot_Area.jpeg"))); // NOI18N
         imageLabel.setToolTipText("WELCOME TO MULTI-STOREY VEHICLE PARKING SYSTEM");
         imageLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 51), 2, true), "MULTI-STOREY VEHICLE PARKING SYSTEM", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.ABOVE_BOTTOM, new java.awt.Font("Bernard MT Condensed", 1, 36), new java.awt.Color(255, 255, 0))); // NOI18N
 
+        menuPanel.setPreferredSize(new java.awt.Dimension(100, 490));
         java.awt.GridBagLayout menuPanelLayout = new java.awt.GridBagLayout();
         menuPanelLayout.columnWidths = new int[] {0};
-        menuPanelLayout.rowHeights = new int[] {0, 20, 0, 20, 0};
+        menuPanelLayout.rowHeights = new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
         menuPanel.setLayout(menuPanelLayout);
 
-        jButton1.setText("jButton1");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        menuPanel.add(jButton1, gridBagConstraints);
-
-        jButton2.setText("jButton2");
+        parkButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/park.png"))); // NOI18N
+        parkButton.setText("PARK");
+        parkButton.setToolTipText("Park a Vehicle");
+        parkButton.setBorder(null);
+        parkButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        parkButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
-        menuPanel.add(jButton2, gridBagConstraints);
+        gridBagConstraints.ipadx = 25;
+        gridBagConstraints.ipady = 25;
+        gridBagConstraints.insets = new java.awt.Insets(70, 0, 0, 0);
+        menuPanel.add(parkButton, gridBagConstraints);
 
-        jButton3.setText("jButton3");
+        releaseButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/release.png"))); // NOI18N
+        releaseButton.setText("RELEASE");
+        releaseButton.setToolTipText("Unpark a Vehicle");
+        releaseButton.setBorder(null);
+        releaseButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        releaseButton.setPreferredSize(new java.awt.Dimension(72, 23));
+        releaseButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
-        menuPanel.add(jButton3, gridBagConstraints);
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipady = 25;
+        menuPanel.add(releaseButton, gridBagConstraints);
+
+        viewButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/system-regular-24-view-1.png"))); // NOI18N
+        viewButton.setText("VIEW");
+        viewButton.setToolTipText("Show Parked Vehicles");
+        viewButton.setBorder(null);
+        viewButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        viewButton.setPreferredSize(new java.awt.Dimension(72, 23));
+        viewButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipady = 25;
+        menuPanel.add(viewButton, gridBagConstraints);
+
+        helpButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/help.png"))); // NOI18N
+        helpButton.setText("HELP");
+        helpButton.setToolTipText("Click here to know the basics of this app");
+        helpButton.setBorder(null);
+        helpButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        helpButton.setPreferredSize(new java.awt.Dimension(72, 23));
+        helpButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridheight = java.awt.GridBagConstraints.RELATIVE;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipady = 25;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 70, 0);
+        menuPanel.add(helpButton, gridBagConstraints);
+
+        logoutLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logout1.png"))); // NOI18N
+        logoutLabel.setToolTipText("Logout");
+        logoutLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipady = 25;
+        menuPanel.add(logoutLabel, gridBagConstraints);
+
+        setLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/system-solid-63-settings-cog.png"))); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 10;
+        gridBagConstraints.gridheight = java.awt.GridBagConstraints.REMAINDER;
+        gridBagConstraints.ipady = 25;
+        menuPanel.add(setLabel, gridBagConstraints);
 
         cardsPanel.setLayout(new java.awt.CardLayout());
 
-        jLabel1.setText("Here, the \"Vehicle Parking Code\" will be written...");
+        jLabel1.setText("Here, the \"View Parked Vehicles Code\" will be written...");
 
-        javax.swing.GroupLayout parkPanelLayout = new javax.swing.GroupLayout(parkPanel);
-        parkPanel.setLayout(parkPanelLayout);
-        parkPanelLayout.setHorizontalGroup(
-            parkPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(parkPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout viewPanelLayout = new javax.swing.GroupLayout(viewPanel);
+        viewPanel.setLayout(viewPanelLayout);
+        viewPanelLayout.setHorizontalGroup(
+            viewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(viewPanelLayout.createSequentialGroup()
                 .addGap(277, 277, 277)
                 .addComponent(jLabel1)
-                .addContainerGap(289, Short.MAX_VALUE))
+                .addContainerGap(260, Short.MAX_VALUE))
         );
-        parkPanelLayout.setVerticalGroup(
-            parkPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(parkPanelLayout.createSequentialGroup()
+        viewPanelLayout.setVerticalGroup(
+            viewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(viewPanelLayout.createSequentialGroup()
                 .addGap(163, 163, 163)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(176, Short.MAX_VALUE))
+                .addContainerGap(259, Short.MAX_VALUE))
         );
 
-        cardsPanel.add(parkPanel, "card2");
+        cardsPanel.add(viewPanel, "card2");
 
         javax.swing.GroupLayout appPanelLayout = new javax.swing.GroupLayout(appPanel);
         appPanel.setLayout(appPanelLayout);
@@ -200,7 +273,7 @@ public class AppGUI extends javax.swing.JFrame {
             .addGroup(appPanelLayout.createSequentialGroup()
                 .addComponent(menuPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cardsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(cardsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 826, Short.MAX_VALUE))
         );
         appPanelLayout.setVerticalGroup(
             appPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -249,7 +322,7 @@ public class AppGUI extends javax.swing.JFrame {
         //</editor-fold>
         
         try {
-            File imageFile = new File("M:\\Coding\\Java\\Minor Project\\ParkingLotManagementSystem\\src\\images\\frameIcon1.png");
+            File imageFile = new File("M:\\Coding\\Java\\Minor Project\\ParkingLotManagementSystem\\src\\images\\frameIcon2.png");
             img = ImageIO.read(imageFile);
         } catch (IOException exc) {
             System.out.println("Cannot load image file!");
@@ -267,19 +340,23 @@ public class AppGUI extends javax.swing.JFrame {
     private javax.swing.JPanel appPanel;
     private javax.swing.JPanel cardsPanel;
     private javax.swing.JLabel errLabel;
+    private javax.swing.JButton helpButton;
     private javax.swing.JLabel imageLabel;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel loginBox;
     private javax.swing.JButton loginButton;
     private javax.swing.JPanel loginPanel;
+    private javax.swing.JLabel loginPicLabel;
+    private javax.swing.JLabel logoutLabel;
     private javax.swing.JPanel menuPanel;
-    private javax.swing.JPanel parkPanel;
+    private javax.swing.JButton parkButton;
     private javax.swing.JLabel pwLabel;
     private javax.swing.JPasswordField pwText;
+    private javax.swing.JButton releaseButton;
+    private javax.swing.JLabel setLabel;
     private javax.swing.JLabel uNameLabel;
     private javax.swing.JTextField uNameText;
+    private javax.swing.JButton viewButton;
+    private javax.swing.JPanel viewPanel;
     // End of variables declaration//GEN-END:variables
 }
