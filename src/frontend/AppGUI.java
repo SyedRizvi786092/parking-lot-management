@@ -42,6 +42,7 @@ public class AppGUI extends javax.swing.JFrame {
         errLabel = new javax.swing.JLabel();
         loginPicLabel = new javax.swing.JLabel();
         appPanel = new javax.swing.JPanel();
+        imagePanel = new javax.swing.JPanel();
         imageLabel = new javax.swing.JLabel();
         menuPanel = new javax.swing.JPanel();
         parkButton = new javax.swing.JButton();
@@ -62,110 +63,107 @@ public class AppGUI extends javax.swing.JFrame {
 
         loginPanel.setBackground(new java.awt.Color(255, 255, 153));
         loginPanel.setPreferredSize(new java.awt.Dimension(932, 699));
+        loginPanel.setLayout(new java.awt.GridBagLayout());
 
         loginBox.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(255, 255, 153), new java.awt.Color(153, 153, 153)), "Log in to your Account", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Bahnschrift", 1, 18))); // NOI18N
+        loginBox.setMinimumSize(new java.awt.Dimension(522, 562));
         loginBox.setPreferredSize(new java.awt.Dimension(522, 562));
+        loginBox.setLayout(new java.awt.GridBagLayout());
 
         uNameLabel.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         uNameLabel.setLabelFor(uNameText);
         uNameLabel.setText("Username:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = java.awt.GridBagConstraints.RELATIVE;
+        gridBagConstraints.insets = new java.awt.Insets(25, 0, 10, 10);
+        loginBox.add(uNameLabel, gridBagConstraints);
 
         pwLabel.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
         pwLabel.setLabelFor(pwText);
         pwLabel.setText("Password:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = java.awt.GridBagConstraints.RELATIVE;
+        gridBagConstraints.insets = new java.awt.Insets(10, 0, 25, 10);
+        loginBox.add(pwLabel, gridBagConstraints);
 
         uNameText.setToolTipText("Enter your username");
+        uNameText.setPreferredSize(new java.awt.Dimension(200, 22));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = java.awt.GridBagConstraints.REMAINDER;
+        gridBagConstraints.insets = new java.awt.Insets(25, 10, 10, 0);
+        loginBox.add(uNameText, gridBagConstraints);
 
         pwText.setToolTipText("Enter your password");
+        pwText.setPreferredSize(new java.awt.Dimension(200, 22));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = java.awt.GridBagConstraints.REMAINDER;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 25, 0);
+        loginBox.add(pwText, gridBagConstraints);
 
         loginButton.setBackground(new java.awt.Color(255, 255, 153));
         loginButton.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 14)); // NOI18N
         loginButton.setText("LOGIN");
         loginButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         loginButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        loginButton.setPreferredSize(new java.awt.Dimension(80, 40));
         loginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loginButtonActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridheight = java.awt.GridBagConstraints.RELATIVE;
+        gridBagConstraints.insets = new java.awt.Insets(10, 0, 15, 0);
+        loginBox.add(loginButton, gridBagConstraints);
 
         errLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridheight = java.awt.GridBagConstraints.REMAINDER;
+        loginBox.add(errLabel, gridBagConstraints);
 
         loginPicLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/tray.png"))); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.PAGE_START;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 25, 0);
+        loginBox.add(loginPicLabel, gridBagConstraints);
 
-        javax.swing.GroupLayout loginBoxLayout = new javax.swing.GroupLayout(loginBox);
-        loginBox.setLayout(loginBoxLayout);
-        loginBoxLayout.setHorizontalGroup(
-            loginBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(loginBoxLayout.createSequentialGroup()
-                .addGap(103, 103, 103)
-                .addGroup(loginBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(uNameLabel)
-                    .addComponent(pwLabel))
-                .addGap(18, 18, 18)
-                .addGroup(loginBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(uNameText)
-                    .addComponent(pwText, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginBoxLayout.createSequentialGroup()
-                .addContainerGap(130, Short.MAX_VALUE)
-                .addGroup(loginBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginBoxLayout.createSequentialGroup()
-                        .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(210, 210, 210))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginBoxLayout.createSequentialGroup()
-                        .addComponent(errLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(130, 130, 130))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginBoxLayout.createSequentialGroup()
-                        .addComponent(loginPicLabel)
-                        .addGap(211, 211, 211))))
-        );
-        loginBoxLayout.setVerticalGroup(
-            loginBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(loginBoxLayout.createSequentialGroup()
-                .addGap(73, 73, 73)
-                .addComponent(loginPicLabel)
-                .addGap(47, 47, 47)
-                .addGroup(loginBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(uNameLabel)
-                    .addComponent(uNameText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(loginBoxLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(pwLabel)
-                    .addComponent(pwText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(51, 51, 51)
-                .addComponent(loginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47)
-                .addComponent(errLabel)
-                .addGap(200, 200, 200))
-        );
-
-        javax.swing.GroupLayout loginPanelLayout = new javax.swing.GroupLayout(loginPanel);
-        loginPanel.setLayout(loginPanelLayout);
-        loginPanelLayout.setHorizontalGroup(
-            loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, loginPanelLayout.createSequentialGroup()
-                .addGap(204, 204, 204)
-                .addComponent(loginBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(204, 204, 204))
-        );
-        loginPanelLayout.setVerticalGroup(
-            loginPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(loginPanelLayout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addComponent(loginBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(77, 77, 77))
-        );
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(113, 205, 113, 205);
+        loginPanel.add(loginBox, gridBagConstraints);
 
         getContentPane().add(loginPanel, "login");
 
         appPanel.setPreferredSize(new java.awt.Dimension(932, 699));
 
-        imageLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Parking_Lot_Area.jpeg"))); // NOI18N
+        imagePanel.setPreferredSize(new java.awt.Dimension(932, 209));
+        imagePanel.setLayout(new java.awt.BorderLayout());
+
+        imageLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Parking_Lot_Area_resized-2.png"))); // NOI18N
         imageLabel.setToolTipText("WELCOME TO MULTI-STOREY VEHICLE PARKING SYSTEM");
-        imageLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 51), 2, true), "MULTI-STOREY VEHICLE PARKING SYSTEM", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.ABOVE_BOTTOM, new java.awt.Font("Bernard MT Condensed", 1, 36), new java.awt.Color(255, 255, 0))); // NOI18N
+        imageLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 51), 2, true), "MULTI-STOREY VEHICLE PARKING SYSTEM", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.ABOVE_BOTTOM, new java.awt.Font("Bernard MT Condensed", 1, 36), new java.awt.Color(0, 204, 204))); // NOI18N
         imageLabel.setMinimumSize(new java.awt.Dimension(932, 209));
         imageLabel.setPreferredSize(new java.awt.Dimension(932, 209));
+        imagePanel.add(imageLabel, java.awt.BorderLayout.CENTER);
 
         menuPanel.setBackground(new java.awt.Color(153, 255, 255));
         menuPanel.setMinimumSize(new java.awt.Dimension(100, 490));
@@ -269,6 +267,8 @@ public class AppGUI extends javax.swing.JFrame {
         cardsPanel.setPreferredSize(new java.awt.Dimension(832, 490));
         cardsPanel.setLayout(new java.awt.CardLayout());
 
+        viewPanel.setPreferredSize(new java.awt.Dimension(832, 490));
+
         jLabel1.setText("Here, the \"View Parked Vehicles Code\" will be written...");
 
         javax.swing.GroupLayout viewPanelLayout = new javax.swing.GroupLayout(viewPanel);
@@ -278,14 +278,14 @@ public class AppGUI extends javax.swing.JFrame {
             .addGroup(viewPanelLayout.createSequentialGroup()
                 .addGap(277, 277, 277)
                 .addComponent(jLabel1)
-                .addContainerGap(260, Short.MAX_VALUE))
+                .addContainerGap(479, Short.MAX_VALUE))
         );
         viewPanelLayout.setVerticalGroup(
             viewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(viewPanelLayout.createSequentialGroup()
                 .addGap(163, 163, 163)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(259, Short.MAX_VALUE))
+                .addContainerGap(334, Short.MAX_VALUE))
         );
 
         cardsPanel.add(viewPanel, "card2");
@@ -294,19 +294,19 @@ public class AppGUI extends javax.swing.JFrame {
         appPanel.setLayout(appPanelLayout);
         appPanelLayout.setHorizontalGroup(
             appPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(imageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
             .addGroup(appPanelLayout.createSequentialGroup()
                 .addComponent(menuPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cardsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+            .addComponent(imagePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         appPanelLayout.setVerticalGroup(
             appPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(appPanelLayout.createSequentialGroup()
-                .addComponent(imageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(imagePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(appPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(menuPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(menuPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 657, Short.MAX_VALUE)
                     .addComponent(cardsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
@@ -376,6 +376,7 @@ public class AppGUI extends javax.swing.JFrame {
     private javax.swing.JLabel errLabel;
     private javax.swing.JButton helpButton;
     private javax.swing.JLabel imageLabel;
+    private javax.swing.JPanel imagePanel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel loginBox;
     private javax.swing.JButton loginButton;
