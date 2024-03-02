@@ -54,7 +54,9 @@ public class AppGUI extends javax.swing.JFrame {
         setLabel = new javax.swing.JLabel();
         cardsPanel = new javax.swing.JPanel();
         viewPanel = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        openSlotsPanel = new javax.swing.JPanel();
+        availSlotsPanel = new javax.swing.JPanel();
+        occSlotsPanel = new javax.swing.JPanel();
         parkPanel = new javax.swing.JPanel();
         vinLabel = new javax.swing.JLabel();
         vinText = new javax.swing.JTextField();
@@ -65,6 +67,10 @@ public class AppGUI extends javax.swing.JFrame {
         colorLabel = new javax.swing.JLabel();
         parkConfirmButton = new javax.swing.JButton();
         vehicleColorBox = new javax.swing.JComboBox<>();
+        releasePanel = new javax.swing.JPanel();
+        ticketLabel = new javax.swing.JLabel();
+        ticketText = new javax.swing.JTextField();
+        releaseConfirmButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("PARK IT");
@@ -217,6 +223,11 @@ public class AppGUI extends javax.swing.JFrame {
         releaseButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         releaseButton.setPreferredSize(new java.awt.Dimension(72, 23));
         releaseButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        releaseButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                releaseButtonActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
@@ -233,6 +244,11 @@ public class AppGUI extends javax.swing.JFrame {
         viewButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         viewButton.setPreferredSize(new java.awt.Dimension(72, 23));
         viewButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        viewButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewButtonActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 6;
@@ -290,14 +306,75 @@ public class AppGUI extends javax.swing.JFrame {
         viewPanel.setPreferredSize(new java.awt.Dimension(832, 490));
         viewPanel.setLayout(new java.awt.GridBagLayout());
 
-        jLabel1.setText("Here, the \"View Parked Vehicles Code\" will be written...");
+        openSlotsPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "View No. of Open Slots"));
+        openSlotsPanel.setPreferredSize(new java.awt.Dimension(320, 160));
+
+        javax.swing.GroupLayout openSlotsPanelLayout = new javax.swing.GroupLayout(openSlotsPanel);
+        openSlotsPanel.setLayout(openSlotsPanelLayout);
+        openSlotsPanelLayout.setHorizontalGroup(
+            openSlotsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 417, Short.MAX_VALUE)
+        );
+        openSlotsPanelLayout.setVerticalGroup(
+            openSlotsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 221, Short.MAX_VALUE)
+        );
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipady = 144;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(163, 277, 334, 479);
-        viewPanel.add(jLabel1, gridBagConstraints);
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.weighty = 0.1;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 0, 0);
+        viewPanel.add(openSlotsPanel, gridBagConstraints);
+
+        availSlotsPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Display Available Slots"));
+        availSlotsPanel.setPreferredSize(new java.awt.Dimension(492, 470));
+
+        javax.swing.GroupLayout availSlotsPanelLayout = new javax.swing.GroupLayout(availSlotsPanel);
+        availSlotsPanel.setLayout(availSlotsPanelLayout);
+        availSlotsPanelLayout.setHorizontalGroup(
+            availSlotsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 589, Short.MAX_VALUE)
+        );
+        availSlotsPanelLayout.setVerticalGroup(
+            availSlotsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 616, Short.MAX_VALUE)
+        );
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.weighty = 0.1;
+        gridBagConstraints.insets = new java.awt.Insets(5, 0, 10, 10);
+        viewPanel.add(availSlotsPanel, gridBagConstraints);
+
+        occSlotsPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Display Occupied Slots"));
+        occSlotsPanel.setPreferredSize(new java.awt.Dimension(320, 310));
+
+        javax.swing.GroupLayout occSlotsPanelLayout = new javax.swing.GroupLayout(occSlotsPanel);
+        occSlotsPanel.setLayout(occSlotsPanelLayout);
+        occSlotsPanelLayout.setHorizontalGroup(
+            occSlotsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 417, Short.MAX_VALUE)
+        );
+        occSlotsPanelLayout.setVerticalGroup(
+            occSlotsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 371, Short.MAX_VALUE)
+        );
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.weighty = 0.1;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 10, 0);
+        viewPanel.add(occSlotsPanel, gridBagConstraints);
 
         cardsPanel.add(viewPanel, "view");
 
@@ -390,6 +467,43 @@ public class AppGUI extends javax.swing.JFrame {
 
         cardsPanel.add(parkPanel, "park");
 
+        releasePanel.setPreferredSize(new java.awt.Dimension(832, 490));
+        releasePanel.setLayout(new java.awt.GridBagLayout());
+
+        ticketLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        ticketLabel.setText("Ticket ID:");
+        ticketLabel.setToolTipText("");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = java.awt.GridBagConstraints.REMAINDER;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 10, 0);
+        releasePanel.add(ticketLabel, gridBagConstraints);
+
+        ticketText.setToolTipText("Enter the ticket ID of the vehicle to be released");
+        ticketText.setPreferredSize(new java.awt.Dimension(208, 22));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = java.awt.GridBagConstraints.REMAINDER;
+        gridBagConstraints.gridheight = java.awt.GridBagConstraints.RELATIVE;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
+        releasePanel.add(ticketText, gridBagConstraints);
+
+        releaseConfirmButton.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        releaseConfirmButton.setText("CONFIRM");
+        releaseConfirmButton.setPreferredSize(new java.awt.Dimension(105, 40));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = java.awt.GridBagConstraints.REMAINDER;
+        gridBagConstraints.gridheight = java.awt.GridBagConstraints.REMAINDER;
+        gridBagConstraints.insets = new java.awt.Insets(50, 0, 0, 0);
+        releasePanel.add(releaseConfirmButton, gridBagConstraints);
+
+        cardsPanel.add(releasePanel, "release");
+
         javax.swing.GroupLayout appPanelLayout = new javax.swing.GroupLayout(appPanel);
         appPanel.setLayout(appPanelLayout);
         appPanelLayout.setHorizontalGroup(
@@ -421,13 +535,24 @@ public class AppGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_loginButtonActionPerformed
 
     private void logoutLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutLabelMouseClicked
-        System.out.println("Successfully Loged out!");
+        CardLayout c = (CardLayout)getContentPane().getLayout();
+        c.show(this.getContentPane(), "login");
     }//GEN-LAST:event_logoutLabelMouseClicked
 
     private void parkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_parkButtonActionPerformed
         CardLayout c = (CardLayout)cardsPanel.getLayout();
         c.show(cardsPanel, "park");
     }//GEN-LAST:event_parkButtonActionPerformed
+
+    private void viewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewButtonActionPerformed
+        CardLayout c = (CardLayout)cardsPanel.getLayout();
+        c.show(cardsPanel, "view");
+    }//GEN-LAST:event_viewButtonActionPerformed
+
+    private void releaseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_releaseButtonActionPerformed
+        CardLayout c = (CardLayout)cardsPanel.getLayout();
+        c.show(cardsPanel, "release");
+    }//GEN-LAST:event_releaseButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -477,6 +602,7 @@ public class AppGUI extends javax.swing.JFrame {
     static Image img;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel appPanel;
+    private javax.swing.JPanel availSlotsPanel;
     private javax.swing.JRadioButton bikeRButton;
     private javax.swing.JRadioButton carRButton;
     private javax.swing.JPanel cardsPanel;
@@ -485,20 +611,25 @@ public class AppGUI extends javax.swing.JFrame {
     private javax.swing.JButton helpButton;
     private javax.swing.JLabel imageLabel;
     private javax.swing.JPanel imagePanel;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel loginBox;
     private javax.swing.JButton loginButton;
     private javax.swing.JPanel loginPanel;
     private javax.swing.JLabel loginPicLabel;
     private javax.swing.JLabel logoutLabel;
     private javax.swing.JPanel menuPanel;
+    private javax.swing.JPanel occSlotsPanel;
+    private javax.swing.JPanel openSlotsPanel;
     private javax.swing.JButton parkButton;
     private javax.swing.JButton parkConfirmButton;
     private javax.swing.JPanel parkPanel;
     private javax.swing.JLabel pwLabel;
     private javax.swing.JPasswordField pwText;
     private javax.swing.JButton releaseButton;
+    private javax.swing.JButton releaseConfirmButton;
+    private javax.swing.JPanel releasePanel;
     private javax.swing.JLabel setLabel;
+    private javax.swing.JLabel ticketLabel;
+    private javax.swing.JTextField ticketText;
     private javax.swing.JRadioButton truckRButton;
     private javax.swing.JLabel typeLabel;
     private javax.swing.JLabel uNameLabel;
