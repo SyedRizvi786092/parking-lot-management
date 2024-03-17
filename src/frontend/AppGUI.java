@@ -10,6 +10,7 @@ package frontend;
  */
 
 import java.awt.*;
+import javax.swing.*;
 import javax.imageio.*;
 import java.io.*;
 
@@ -20,6 +21,7 @@ public class AppGUI extends javax.swing.JFrame {
      */
     public AppGUI() {
         initComponents();
+        currButton = viewButton;
     }
 
     /**
@@ -55,6 +57,8 @@ public class AppGUI extends javax.swing.JFrame {
         cardsPanel = new javax.swing.JPanel();
         viewPanel = new javax.swing.JPanel();
         openSlotsPanel = new javax.swing.JPanel();
+        vehicleTypeBox = new javax.swing.JComboBox<>();
+        openSlotsLabel = new javax.swing.JLabel();
         availSlotsPanel = new javax.swing.JPanel();
         occSlotsPanel = new javax.swing.JPanel();
         parkPanel = new javax.swing.JPanel();
@@ -71,6 +75,15 @@ public class AppGUI extends javax.swing.JFrame {
         ticketLabel = new javax.swing.JLabel();
         ticketText = new javax.swing.JTextField();
         releaseConfirmButton = new javax.swing.JButton();
+        helpPanel = new javax.swing.JPanel();
+        helpTabs = new javax.swing.JTabbedPane();
+        parkingHelp = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        releasingHelp = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        viewingHelp = new javax.swing.JPanel();
+        upcomingFeatures = new javax.swing.JPanel();
+        aboutUs = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("PARK IT");
@@ -179,7 +192,7 @@ public class AppGUI extends javax.swing.JFrame {
 
         imageLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Parking_Lot_Area_resized-2.png"))); // NOI18N
         imageLabel.setToolTipText("WELCOME TO MULTI-STOREY VEHICLE PARKING SYSTEM");
-        imageLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 255, 255), 2, true), "MULTI-STOREY VEHICLE PARKING SYSTEM", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.ABOVE_BOTTOM, new java.awt.Font("Bernard MT Condensed", 1, 36), new java.awt.Color(0, 204, 204))); // NOI18N
+        imageLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 255, 255), 3, true), "MULTI-STOREY VEHICLE PARKING SYSTEM", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.ABOVE_BOTTOM, new java.awt.Font("Bernard MT Condensed", 1, 36), new java.awt.Color(0, 204, 204))); // NOI18N
         imageLabel.setMinimumSize(new java.awt.Dimension(932, 209));
         imageLabel.setPreferredSize(new java.awt.Dimension(932, 209));
         imagePanel.add(imageLabel, java.awt.BorderLayout.CENTER);
@@ -196,7 +209,7 @@ public class AppGUI extends javax.swing.JFrame {
         parkButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/park.png"))); // NOI18N
         parkButton.setText("PARK");
         parkButton.setToolTipText("Park a Vehicle");
-        parkButton.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
+        parkButton.setBorder(null);
         parkButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         parkButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         parkButton.setPreferredSize(new java.awt.Dimension(72, 23));
@@ -218,7 +231,7 @@ public class AppGUI extends javax.swing.JFrame {
         releaseButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/release.png"))); // NOI18N
         releaseButton.setText("RELEASE");
         releaseButton.setToolTipText("Unpark a Vehicle");
-        releaseButton.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
+        releaseButton.setBorder(null);
         releaseButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         releaseButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         releaseButton.setPreferredSize(new java.awt.Dimension(72, 23));
@@ -235,11 +248,11 @@ public class AppGUI extends javax.swing.JFrame {
         gridBagConstraints.ipady = 25;
         menuPanel.add(releaseButton, gridBagConstraints);
 
-        viewButton.setBackground(new java.awt.Color(153, 255, 255));
+        viewButton.setBackground(new java.awt.Color(0, 255, 255));
         viewButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/system-regular-24-view-1.png"))); // NOI18N
         viewButton.setText("VIEW");
         viewButton.setToolTipText("Show Parked Vehicles");
-        viewButton.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
+        viewButton.setBorder(null);
         viewButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         viewButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         viewButton.setPreferredSize(new java.awt.Dimension(72, 23));
@@ -260,11 +273,16 @@ public class AppGUI extends javax.swing.JFrame {
         helpButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/help.png"))); // NOI18N
         helpButton.setText("HELP");
         helpButton.setToolTipText("Click here to know the basics of this app");
-        helpButton.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
+        helpButton.setBorder(null);
         helpButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         helpButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         helpButton.setPreferredSize(new java.awt.Dimension(72, 23));
         helpButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        helpButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                helpButtonActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 8;
@@ -308,17 +326,31 @@ public class AppGUI extends javax.swing.JFrame {
 
         openSlotsPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "View No. of Open Slots"));
         openSlotsPanel.setPreferredSize(new java.awt.Dimension(320, 160));
+        openSlotsPanel.setLayout(new java.awt.GridBagLayout());
 
-        javax.swing.GroupLayout openSlotsPanelLayout = new javax.swing.GroupLayout(openSlotsPanel);
-        openSlotsPanel.setLayout(openSlotsPanelLayout);
-        openSlotsPanelLayout.setHorizontalGroup(
-            openSlotsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 417, Short.MAX_VALUE)
-        );
-        openSlotsPanelLayout.setVerticalGroup(
-            openSlotsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 221, Short.MAX_VALUE)
-        );
+        vehicleTypeBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Vehicle Type", "Car", "Truck", "Bike" }));
+        vehicleTypeBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vehicleTypeBoxActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = java.awt.GridBagConstraints.REMAINDER;
+        gridBagConstraints.gridheight = java.awt.GridBagConstraints.RELATIVE;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 15, 0);
+        openSlotsPanel.add(vehicleTypeBox, gridBagConstraints);
+
+        openSlotsLabel.setLabelFor(vehicleTypeBox);
+        openSlotsLabel.setPreferredSize(new java.awt.Dimension(200, 16));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = java.awt.GridBagConstraints.REMAINDER;
+        gridBagConstraints.gridheight = java.awt.GridBagConstraints.REMAINDER;
+        gridBagConstraints.insets = new java.awt.Insets(15, 0, 0, 0);
+        openSlotsPanel.add(openSlotsLabel, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -441,6 +473,7 @@ public class AppGUI extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 20, 0);
         parkPanel.add(colorLabel, gridBagConstraints);
 
+        parkConfirmButton.setBackground(new java.awt.Color(255, 255, 153));
         parkConfirmButton.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         parkConfirmButton.setText("CONFIRM");
         parkConfirmButton.setToolTipText("Park the vehicle");
@@ -467,6 +500,7 @@ public class AppGUI extends javax.swing.JFrame {
 
         cardsPanel.add(parkPanel, "park");
 
+        releasePanel.setMinimumSize(new java.awt.Dimension(832, 490));
         releasePanel.setPreferredSize(new java.awt.Dimension(832, 490));
         releasePanel.setLayout(new java.awt.GridBagLayout());
 
@@ -491,9 +525,13 @@ public class AppGUI extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
         releasePanel.add(ticketText, gridBagConstraints);
 
+        releaseConfirmButton.setBackground(new java.awt.Color(255, 255, 153));
         releaseConfirmButton.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         releaseConfirmButton.setText("CONFIRM");
-        releaseConfirmButton.setPreferredSize(new java.awt.Dimension(105, 40));
+        releaseConfirmButton.setToolTipText("Release the vehicle");
+        releaseConfirmButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        releaseConfirmButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        releaseConfirmButton.setPreferredSize(new java.awt.Dimension(90, 35));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
@@ -503,6 +541,125 @@ public class AppGUI extends javax.swing.JFrame {
         releasePanel.add(releaseConfirmButton, gridBagConstraints);
 
         cardsPanel.add(releasePanel, "release");
+
+        helpPanel.setMinimumSize(new java.awt.Dimension(832, 490));
+        helpPanel.setPreferredSize(new java.awt.Dimension(832, 490));
+        helpPanel.setLayout(new java.awt.GridBagLayout());
+
+        helpTabs.setMinimumSize(new java.awt.Dimension(812, 470));
+        helpTabs.setPreferredSize(new java.awt.Dimension(812, 470));
+
+        parkingHelp.setPreferredSize(new java.awt.Dimension(812, 460));
+
+        jLabel1.setText("Here, Parking help will be shown...");
+
+        javax.swing.GroupLayout parkingHelpLayout = new javax.swing.GroupLayout(parkingHelp);
+        parkingHelp.setLayout(parkingHelpLayout);
+        parkingHelpLayout.setHorizontalGroup(
+            parkingHelpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1025, Short.MAX_VALUE)
+            .addGroup(parkingHelpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(parkingHelpLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel1)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        parkingHelpLayout.setVerticalGroup(
+            parkingHelpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 600, Short.MAX_VALUE)
+            .addGroup(parkingHelpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(parkingHelpLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel1)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
+        helpTabs.addTab("Parking a Vehicle", new javax.swing.ImageIcon(getClass().getResource("/images/park.png")), parkingHelp); // NOI18N
+
+        releasingHelp.setPreferredSize(new java.awt.Dimension(812, 460));
+
+        jLabel2.setText("Here, releasing help will be shown...");
+
+        javax.swing.GroupLayout releasingHelpLayout = new javax.swing.GroupLayout(releasingHelp);
+        releasingHelp.setLayout(releasingHelpLayout);
+        releasingHelpLayout.setHorizontalGroup(
+            releasingHelpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1025, Short.MAX_VALUE)
+            .addGroup(releasingHelpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(releasingHelpLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel2)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        releasingHelpLayout.setVerticalGroup(
+            releasingHelpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 600, Short.MAX_VALUE)
+            .addGroup(releasingHelpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(releasingHelpLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel2)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
+        helpTabs.addTab("Releasing a Vehicle", new javax.swing.ImageIcon(getClass().getResource("/images/release.png")), releasingHelp); // NOI18N
+
+        viewingHelp.setPreferredSize(new java.awt.Dimension(812, 460));
+
+        javax.swing.GroupLayout viewingHelpLayout = new javax.swing.GroupLayout(viewingHelp);
+        viewingHelp.setLayout(viewingHelpLayout);
+        viewingHelpLayout.setHorizontalGroup(
+            viewingHelpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1025, Short.MAX_VALUE)
+        );
+        viewingHelpLayout.setVerticalGroup(
+            viewingHelpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 600, Short.MAX_VALUE)
+        );
+
+        helpTabs.addTab("Checking Parking Lot Status", new javax.swing.ImageIcon(getClass().getResource("/images/system-regular-14-article (1).png")), viewingHelp); // NOI18N
+
+        upcomingFeatures.setPreferredSize(new java.awt.Dimension(812, 460));
+
+        javax.swing.GroupLayout upcomingFeaturesLayout = new javax.swing.GroupLayout(upcomingFeatures);
+        upcomingFeatures.setLayout(upcomingFeaturesLayout);
+        upcomingFeaturesLayout.setHorizontalGroup(
+            upcomingFeaturesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1025, Short.MAX_VALUE)
+        );
+        upcomingFeaturesLayout.setVerticalGroup(
+            upcomingFeaturesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 600, Short.MAX_VALUE)
+        );
+
+        helpTabs.addTab("What's Cooking!?", new javax.swing.ImageIcon(getClass().getResource("/images/system-regular-93-pizza-slice.png")), upcomingFeatures); // NOI18N
+
+        aboutUs.setPreferredSize(new java.awt.Dimension(812, 460));
+
+        javax.swing.GroupLayout aboutUsLayout = new javax.swing.GroupLayout(aboutUs);
+        aboutUs.setLayout(aboutUsLayout);
+        aboutUsLayout.setHorizontalGroup(
+            aboutUsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1025, Short.MAX_VALUE)
+        );
+        aboutUsLayout.setVerticalGroup(
+            aboutUsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 600, Short.MAX_VALUE)
+        );
+
+        helpTabs.addTab("About Us", new javax.swing.ImageIcon(getClass().getResource("/images/system-regular-178-work.png")), aboutUs); // NOI18N
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = java.awt.GridBagConstraints.REMAINDER;
+        gridBagConstraints.gridheight = java.awt.GridBagConstraints.REMAINDER;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 0.5;
+        gridBagConstraints.weighty = 0.5;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
+        helpPanel.add(helpTabs, gridBagConstraints);
+
+        cardsPanel.add(helpPanel, "help");
 
         javax.swing.GroupLayout appPanelLayout = new javax.swing.GroupLayout(appPanel);
         appPanel.setLayout(appPanelLayout);
@@ -540,19 +697,43 @@ public class AppGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_logoutLabelMouseClicked
 
     private void parkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_parkButtonActionPerformed
+        currButton.setBackground(new java.awt.Color(153, 255, 255));
+        parkButton.setBackground(new java.awt.Color(0, 255, 255));
+        currButton = parkButton;
         CardLayout c = (CardLayout)cardsPanel.getLayout();
         c.show(cardsPanel, "park");
     }//GEN-LAST:event_parkButtonActionPerformed
 
     private void viewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewButtonActionPerformed
+        currButton.setBackground(new java.awt.Color(153, 255, 255));
+        viewButton.setBackground(new java.awt.Color(0, 255, 255));
+        currButton = viewButton;
         CardLayout c = (CardLayout)cardsPanel.getLayout();
         c.show(cardsPanel, "view");
     }//GEN-LAST:event_viewButtonActionPerformed
 
     private void releaseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_releaseButtonActionPerformed
+        currButton.setBackground(new java.awt.Color(153, 255, 255));
+        releaseButton.setBackground(new java.awt.Color(0, 255, 255));
+        currButton = releaseButton;
         CardLayout c = (CardLayout)cardsPanel.getLayout();
         c.show(cardsPanel, "release");
     }//GEN-LAST:event_releaseButtonActionPerformed
+
+    private void vehicleTypeBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vehicleTypeBoxActionPerformed
+        JComboBox cb = (JComboBox)evt.getSource();
+        String vType = (String)cb.getSelectedItem();
+        if(vType.equals("Select Vehicle Type")==false)
+            openSlotsLabel.setText("Currently Open Slots for "+vType+": ");
+    }//GEN-LAST:event_vehicleTypeBoxActionPerformed
+
+    private void helpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpButtonActionPerformed
+        currButton.setBackground(new java.awt.Color(153, 255, 255));
+        helpButton.setBackground(new java.awt.Color(0, 255, 255));
+        currButton = helpButton;
+        CardLayout c = (CardLayout)cardsPanel.getLayout();
+        c.show(cardsPanel, "help");
+    }//GEN-LAST:event_helpButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -600,7 +781,9 @@ public class AppGUI extends javax.swing.JFrame {
     }
     
     static Image img;
+    private javax.swing.JButton currButton;
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel aboutUs;
     private javax.swing.JPanel appPanel;
     private javax.swing.JPanel availSlotsPanel;
     private javax.swing.JRadioButton bikeRButton;
@@ -609,8 +792,12 @@ public class AppGUI extends javax.swing.JFrame {
     private javax.swing.JLabel colorLabel;
     private javax.swing.JLabel errLabel;
     private javax.swing.JButton helpButton;
+    private javax.swing.JPanel helpPanel;
+    private javax.swing.JTabbedPane helpTabs;
     private javax.swing.JLabel imageLabel;
     private javax.swing.JPanel imagePanel;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel loginBox;
     private javax.swing.JButton loginButton;
     private javax.swing.JPanel loginPanel;
@@ -618,15 +805,18 @@ public class AppGUI extends javax.swing.JFrame {
     private javax.swing.JLabel logoutLabel;
     private javax.swing.JPanel menuPanel;
     private javax.swing.JPanel occSlotsPanel;
+    private javax.swing.JLabel openSlotsLabel;
     private javax.swing.JPanel openSlotsPanel;
     private javax.swing.JButton parkButton;
     private javax.swing.JButton parkConfirmButton;
     private javax.swing.JPanel parkPanel;
+    private javax.swing.JPanel parkingHelp;
     private javax.swing.JLabel pwLabel;
     private javax.swing.JPasswordField pwText;
     private javax.swing.JButton releaseButton;
     private javax.swing.JButton releaseConfirmButton;
     private javax.swing.JPanel releasePanel;
+    private javax.swing.JPanel releasingHelp;
     private javax.swing.JLabel setLabel;
     private javax.swing.JLabel ticketLabel;
     private javax.swing.JTextField ticketText;
@@ -634,10 +824,13 @@ public class AppGUI extends javax.swing.JFrame {
     private javax.swing.JLabel typeLabel;
     private javax.swing.JLabel uNameLabel;
     private javax.swing.JTextField uNameText;
+    private javax.swing.JPanel upcomingFeatures;
     private javax.swing.JComboBox<String> vehicleColorBox;
     private javax.swing.ButtonGroup vehicleType;
+    private javax.swing.JComboBox<String> vehicleTypeBox;
     private javax.swing.JButton viewButton;
     private javax.swing.JPanel viewPanel;
+    private javax.swing.JPanel viewingHelp;
     private javax.swing.JLabel vinLabel;
     private javax.swing.JTextField vinText;
     // End of variables declaration//GEN-END:variables
