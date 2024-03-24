@@ -21,6 +21,8 @@ public class AppGUI extends javax.swing.JFrame {
      */
     public AppGUI() {
         initComponents();
+        occSlotsPanelJr.setVisible(false);
+        availSlotsPanelJr.setVisible(false);
         currButton = viewButton;
     }
 
@@ -57,10 +59,16 @@ public class AppGUI extends javax.swing.JFrame {
         cardsPanel = new javax.swing.JPanel();
         viewPanel = new javax.swing.JPanel();
         openSlotsPanel = new javax.swing.JPanel();
-        vehicleTypeBox = new javax.swing.JComboBox<>();
+        vehicleTypeBox1 = new javax.swing.JComboBox<>();
         openSlotsLabel = new javax.swing.JLabel();
         availSlotsPanel = new javax.swing.JPanel();
+        vehicleTypeBox3 = new javax.swing.JComboBox<>();
+        availSlotsPanelJr = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
         occSlotsPanel = new javax.swing.JPanel();
+        vehicleTypeBox2 = new javax.swing.JComboBox<>();
+        occSlotsPanelJr = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         parkPanel = new javax.swing.JPanel();
         vinLabel = new javax.swing.JLabel();
         vinText = new javax.swing.JTextField();
@@ -78,9 +86,9 @@ public class AppGUI extends javax.swing.JFrame {
         helpPanel = new javax.swing.JPanel();
         helpTabs = new javax.swing.JTabbedPane();
         parkingHelp = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        parkInsLabel = new javax.swing.JLabel();
         releasingHelp = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        releaseInsLabel = new javax.swing.JLabel();
         viewingHelp = new javax.swing.JPanel();
         upcomingFeatures = new javax.swing.JPanel();
         aboutUs = new javax.swing.JPanel();
@@ -248,7 +256,7 @@ public class AppGUI extends javax.swing.JFrame {
         gridBagConstraints.ipady = 25;
         menuPanel.add(releaseButton, gridBagConstraints);
 
-        viewButton.setBackground(new java.awt.Color(0, 255, 255));
+        viewButton.setBackground(new java.awt.Color(255, 255, 153));
         viewButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/system-regular-24-view-1.png"))); // NOI18N
         viewButton.setText("VIEW");
         viewButton.setToolTipText("Show Parked Vehicles");
@@ -328,10 +336,10 @@ public class AppGUI extends javax.swing.JFrame {
         openSlotsPanel.setPreferredSize(new java.awt.Dimension(320, 160));
         openSlotsPanel.setLayout(new java.awt.GridBagLayout());
 
-        vehicleTypeBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Vehicle Type", "Car", "Truck", "Bike" }));
-        vehicleTypeBox.addActionListener(new java.awt.event.ActionListener() {
+        vehicleTypeBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Vehicle Type", "Car", "Truck", "Bike" }));
+        vehicleTypeBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                vehicleTypeBoxActionPerformed(evt);
+                vehicleTypeBox1ActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -340,9 +348,9 @@ public class AppGUI extends javax.swing.JFrame {
         gridBagConstraints.gridwidth = java.awt.GridBagConstraints.REMAINDER;
         gridBagConstraints.gridheight = java.awt.GridBagConstraints.RELATIVE;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 15, 0);
-        openSlotsPanel.add(vehicleTypeBox, gridBagConstraints);
+        openSlotsPanel.add(vehicleTypeBox1, gridBagConstraints);
 
-        openSlotsLabel.setLabelFor(vehicleTypeBox);
+        openSlotsLabel.setLabelFor(vehicleTypeBox1);
         openSlotsLabel.setPreferredSize(new java.awt.Dimension(200, 16));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -363,17 +371,60 @@ public class AppGUI extends javax.swing.JFrame {
 
         availSlotsPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Display Available Slots"));
         availSlotsPanel.setPreferredSize(new java.awt.Dimension(492, 470));
+        availSlotsPanel.setLayout(new java.awt.GridBagLayout());
 
-        javax.swing.GroupLayout availSlotsPanelLayout = new javax.swing.GroupLayout(availSlotsPanel);
-        availSlotsPanel.setLayout(availSlotsPanelLayout);
-        availSlotsPanelLayout.setHorizontalGroup(
-            availSlotsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 589, Short.MAX_VALUE)
+        vehicleTypeBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Vehicle Type", "Car", "Truck", "Bike" }));
+        vehicleTypeBox3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vehicleTypeBox3ActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = java.awt.GridBagConstraints.REMAINDER;
+        gridBagConstraints.gridheight = java.awt.GridBagConstraints.RELATIVE;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.PAGE_START;
+        gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.weighty = 0.1;
+        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
+        availSlotsPanel.add(vehicleTypeBox3, gridBagConstraints);
+
+        availSlotsPanelJr.setPreferredSize(new java.awt.Dimension(110, 110));
+
+        jLabel2.setText("The currently available slots will be displayed here :)");
+
+        javax.swing.GroupLayout availSlotsPanelJrLayout = new javax.swing.GroupLayout(availSlotsPanelJr);
+        availSlotsPanelJr.setLayout(availSlotsPanelJrLayout);
+        availSlotsPanelJrLayout.setHorizontalGroup(
+            availSlotsPanelJrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 569, Short.MAX_VALUE)
+            .addGroup(availSlotsPanelJrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(availSlotsPanelJrLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel2)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
-        availSlotsPanelLayout.setVerticalGroup(
-            availSlotsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 616, Short.MAX_VALUE)
+        availSlotsPanelJrLayout.setVerticalGroup(
+            availSlotsPanelJrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 539, Short.MAX_VALUE)
+            .addGroup(availSlotsPanelJrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(availSlotsPanelJrLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel2)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = java.awt.GridBagConstraints.REMAINDER;
+        gridBagConstraints.gridheight = java.awt.GridBagConstraints.REMAINDER;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.weighty = 1.25;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 10, 10);
+        availSlotsPanel.add(availSlotsPanelJr, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -387,17 +438,58 @@ public class AppGUI extends javax.swing.JFrame {
 
         occSlotsPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Display Occupied Slots"));
         occSlotsPanel.setPreferredSize(new java.awt.Dimension(320, 310));
+        occSlotsPanel.setLayout(new java.awt.GridBagLayout());
 
-        javax.swing.GroupLayout occSlotsPanelLayout = new javax.swing.GroupLayout(occSlotsPanel);
-        occSlotsPanel.setLayout(occSlotsPanelLayout);
-        occSlotsPanelLayout.setHorizontalGroup(
-            occSlotsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 417, Short.MAX_VALUE)
+        vehicleTypeBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Vehicle Type", "Car", "Truck", "Bike" }));
+        vehicleTypeBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vehicleTypeBox2ActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = java.awt.GridBagConstraints.REMAINDER;
+        gridBagConstraints.gridheight = java.awt.GridBagConstraints.RELATIVE;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.PAGE_START;
+        gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.weighty = 0.1;
+        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
+        occSlotsPanel.add(vehicleTypeBox2, gridBagConstraints);
+
+        jLabel1.setText("The currently occupied slots will be displayed here :)");
+
+        javax.swing.GroupLayout occSlotsPanelJrLayout = new javax.swing.GroupLayout(occSlotsPanelJr);
+        occSlotsPanelJr.setLayout(occSlotsPanelJrLayout);
+        occSlotsPanelJrLayout.setHorizontalGroup(
+            occSlotsPanelJrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 397, Short.MAX_VALUE)
+            .addGroup(occSlotsPanelJrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(occSlotsPanelJrLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel1)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
-        occSlotsPanelLayout.setVerticalGroup(
-            occSlotsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 371, Short.MAX_VALUE)
+        occSlotsPanelJrLayout.setVerticalGroup(
+            occSlotsPanelJrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 237, Short.MAX_VALUE)
+            .addGroup(occSlotsPanelJrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(occSlotsPanelJrLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel1)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = java.awt.GridBagConstraints.REMAINDER;
+        gridBagConstraints.gridheight = java.awt.GridBagConstraints.REMAINDER;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.weighty = 0.15;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 10, 10);
+        occSlotsPanel.add(occSlotsPanelJr, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -546,76 +638,44 @@ public class AppGUI extends javax.swing.JFrame {
         helpPanel.setPreferredSize(new java.awt.Dimension(832, 490));
         helpPanel.setLayout(new java.awt.GridBagLayout());
 
+        helpTabs.setBackground(new java.awt.Color(255, 255, 153));
         helpTabs.setMinimumSize(new java.awt.Dimension(812, 470));
         helpTabs.setPreferredSize(new java.awt.Dimension(812, 470));
 
         parkingHelp.setPreferredSize(new java.awt.Dimension(812, 460));
+        parkingHelp.setLayout(new java.awt.GridBagLayout());
 
-        jLabel1.setText("Here, Parking help will be shown...");
-
-        javax.swing.GroupLayout parkingHelpLayout = new javax.swing.GroupLayout(parkingHelp);
-        parkingHelp.setLayout(parkingHelpLayout);
-        parkingHelpLayout.setHorizontalGroup(
-            parkingHelpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1025, Short.MAX_VALUE)
-            .addGroup(parkingHelpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(parkingHelpLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel1)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        parkingHelpLayout.setVerticalGroup(
-            parkingHelpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
-            .addGroup(parkingHelpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(parkingHelpLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel1)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+        parkInsLabel.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        parkInsLabel.setText("<html>\nTo Park a Vehicle into the Parking Lot Area: <br>\n<ul>\n<li><b>Click on the Park Button from Menu Bar at the left side of the app screen.</b><br>\nBy clicking on the button, you will see a page where you'll have to enter the details of the app.</li><br>\n<li><b>Enter the details of the Vehicle:</b>\n<ol>\n<li>Enter the <b>Vehicle Identification Number(VIN)</b> of the vehicle.</li>\n<li>Select the <b>Type</b> of the vehicle (Car, Truck or Bike).</li>\n<li>Select the <b>Color</b> of the vehicle from the list of available options <br><i>(if you think the vehicle has a different color, select the color that matches best).</i></li><br>\n</ol>\n<li>Click on <b>CONFIRM</b> button.<br>\nHurray! The vehicle is successfully parked.</li><br>\n<li>A <b>Ticket ID</b> is generated for the parked vehicle which is given to the owner of the vehicle.</li>\n</ul>");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.weighty = 0.1;
+        gridBagConstraints.insets = new java.awt.Insets(20, 20, 0, 0);
+        parkingHelp.add(parkInsLabel, gridBagConstraints);
 
         helpTabs.addTab("Parking a Vehicle", new javax.swing.ImageIcon(getClass().getResource("/images/park.png")), parkingHelp); // NOI18N
 
         releasingHelp.setPreferredSize(new java.awt.Dimension(812, 460));
+        releasingHelp.setLayout(new java.awt.GridBagLayout());
 
-        jLabel2.setText("Here, releasing help will be shown...");
-
-        javax.swing.GroupLayout releasingHelpLayout = new javax.swing.GroupLayout(releasingHelp);
-        releasingHelp.setLayout(releasingHelpLayout);
-        releasingHelpLayout.setHorizontalGroup(
-            releasingHelpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1025, Short.MAX_VALUE)
-            .addGroup(releasingHelpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(releasingHelpLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel2)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        releasingHelpLayout.setVerticalGroup(
-            releasingHelpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
-            .addGroup(releasingHelpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(releasingHelpLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel2)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+        releaseInsLabel.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        releaseInsLabel.setText("<html>\nTo release (unpark) a vehicle from the parking lot area, you'll need a <b>valid Ticket ID</b>.<br>\n<ul>\n<li>Enter the <b>Ticket ID</b> of the vehicle to be released.</li><br>\n<li>Click on <b>CONFIRM</b> button.</li><br>\n<li>If the entered Ticket ID was valid, you will see a message showing that the vehicle is successfully released from the parking lot.</li>\n</ul>");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.weighty = 0.1;
+        gridBagConstraints.insets = new java.awt.Insets(20, 20, 0, 0);
+        releasingHelp.add(releaseInsLabel, gridBagConstraints);
 
         helpTabs.addTab("Releasing a Vehicle", new javax.swing.ImageIcon(getClass().getResource("/images/release.png")), releasingHelp); // NOI18N
 
         viewingHelp.setPreferredSize(new java.awt.Dimension(812, 460));
-
-        javax.swing.GroupLayout viewingHelpLayout = new javax.swing.GroupLayout(viewingHelp);
-        viewingHelp.setLayout(viewingHelpLayout);
-        viewingHelpLayout.setHorizontalGroup(
-            viewingHelpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1025, Short.MAX_VALUE)
-        );
-        viewingHelpLayout.setVerticalGroup(
-            viewingHelpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
-        );
-
+        viewingHelp.setLayout(new java.awt.GridBagLayout());
         helpTabs.addTab("Checking Parking Lot Status", new javax.swing.ImageIcon(getClass().getResource("/images/system-regular-14-article (1).png")), viewingHelp); // NOI18N
 
         upcomingFeatures.setPreferredSize(new java.awt.Dimension(812, 460));
@@ -698,7 +758,7 @@ public class AppGUI extends javax.swing.JFrame {
 
     private void parkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_parkButtonActionPerformed
         currButton.setBackground(new java.awt.Color(153, 255, 255));
-        parkButton.setBackground(new java.awt.Color(0, 255, 255));
+        parkButton.setBackground(new java.awt.Color(255, 255, 153));
         currButton = parkButton;
         CardLayout c = (CardLayout)cardsPanel.getLayout();
         c.show(cardsPanel, "park");
@@ -706,7 +766,7 @@ public class AppGUI extends javax.swing.JFrame {
 
     private void viewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewButtonActionPerformed
         currButton.setBackground(new java.awt.Color(153, 255, 255));
-        viewButton.setBackground(new java.awt.Color(0, 255, 255));
+        viewButton.setBackground(new java.awt.Color(255, 255, 153));
         currButton = viewButton;
         CardLayout c = (CardLayout)cardsPanel.getLayout();
         c.show(cardsPanel, "view");
@@ -714,26 +774,44 @@ public class AppGUI extends javax.swing.JFrame {
 
     private void releaseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_releaseButtonActionPerformed
         currButton.setBackground(new java.awt.Color(153, 255, 255));
-        releaseButton.setBackground(new java.awt.Color(0, 255, 255));
+        releaseButton.setBackground(new java.awt.Color(255, 255, 153));
         currButton = releaseButton;
         CardLayout c = (CardLayout)cardsPanel.getLayout();
         c.show(cardsPanel, "release");
     }//GEN-LAST:event_releaseButtonActionPerformed
 
-    private void vehicleTypeBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vehicleTypeBoxActionPerformed
+    private void vehicleTypeBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vehicleTypeBox1ActionPerformed
         JComboBox cb = (JComboBox)evt.getSource();
         String vType = (String)cb.getSelectedItem();
         if(vType.equals("Select Vehicle Type")==false)
             openSlotsLabel.setText("Currently Open Slots for "+vType+": ");
-    }//GEN-LAST:event_vehicleTypeBoxActionPerformed
+    }//GEN-LAST:event_vehicleTypeBox1ActionPerformed
 
     private void helpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpButtonActionPerformed
         currButton.setBackground(new java.awt.Color(153, 255, 255));
-        helpButton.setBackground(new java.awt.Color(0, 255, 255));
+        helpButton.setBackground(new java.awt.Color(255, 255, 153));
         currButton = helpButton;
         CardLayout c = (CardLayout)cardsPanel.getLayout();
         c.show(cardsPanel, "help");
     }//GEN-LAST:event_helpButtonActionPerformed
+
+    private void vehicleTypeBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vehicleTypeBox2ActionPerformed
+        JComboBox cb = (JComboBox)evt.getSource();
+        String vType = (String)cb.getSelectedItem();
+        if(vType.equals("Select Vehicle Type")==false) {
+            occSlotsPanelJr.setBorder(javax.swing.BorderFactory.createTitledBorder("Occupied "+vType+" Slots"));
+            occSlotsPanelJr.setVisible(true);
+        }
+    }//GEN-LAST:event_vehicleTypeBox2ActionPerformed
+
+    private void vehicleTypeBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vehicleTypeBox3ActionPerformed
+        JComboBox cb = (JComboBox)evt.getSource();
+        String vType = (String)cb.getSelectedItem();
+        if(vType.equals("Select Vehicle Type")==false) {
+            availSlotsPanelJr.setBorder(javax.swing.BorderFactory.createTitledBorder("Available "+vType+" Slots"));
+            availSlotsPanelJr.setVisible(true);
+        }
+    }//GEN-LAST:event_vehicleTypeBox3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -786,6 +864,7 @@ public class AppGUI extends javax.swing.JFrame {
     private javax.swing.JPanel aboutUs;
     private javax.swing.JPanel appPanel;
     private javax.swing.JPanel availSlotsPanel;
+    private javax.swing.JPanel availSlotsPanelJr;
     private javax.swing.JRadioButton bikeRButton;
     private javax.swing.JRadioButton carRButton;
     private javax.swing.JPanel cardsPanel;
@@ -805,16 +884,19 @@ public class AppGUI extends javax.swing.JFrame {
     private javax.swing.JLabel logoutLabel;
     private javax.swing.JPanel menuPanel;
     private javax.swing.JPanel occSlotsPanel;
+    private javax.swing.JPanel occSlotsPanelJr;
     private javax.swing.JLabel openSlotsLabel;
     private javax.swing.JPanel openSlotsPanel;
     private javax.swing.JButton parkButton;
     private javax.swing.JButton parkConfirmButton;
+    private javax.swing.JLabel parkInsLabel;
     private javax.swing.JPanel parkPanel;
     private javax.swing.JPanel parkingHelp;
     private javax.swing.JLabel pwLabel;
     private javax.swing.JPasswordField pwText;
     private javax.swing.JButton releaseButton;
     private javax.swing.JButton releaseConfirmButton;
+    private javax.swing.JLabel releaseInsLabel;
     private javax.swing.JPanel releasePanel;
     private javax.swing.JPanel releasingHelp;
     private javax.swing.JLabel setLabel;
@@ -827,7 +909,9 @@ public class AppGUI extends javax.swing.JFrame {
     private javax.swing.JPanel upcomingFeatures;
     private javax.swing.JComboBox<String> vehicleColorBox;
     private javax.swing.ButtonGroup vehicleType;
-    private javax.swing.JComboBox<String> vehicleTypeBox;
+    private javax.swing.JComboBox<String> vehicleTypeBox1;
+    private javax.swing.JComboBox<String> vehicleTypeBox2;
+    private javax.swing.JComboBox<String> vehicleTypeBox3;
     private javax.swing.JButton viewButton;
     private javax.swing.JPanel viewPanel;
     private javax.swing.JPanel viewingHelp;
