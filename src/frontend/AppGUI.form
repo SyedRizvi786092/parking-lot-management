@@ -1608,7 +1608,7 @@
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Calibri" size="14" style="0"/>
                             </Property>
-                            <Property name="text" type="java.lang.String" value="&lt;html&gt;&#xa;To Park a Vehicle into the Parking Lot Area: &lt;br&gt;&#xa;&lt;ul&gt;&#xa;&lt;li&gt;&lt;b&gt;Click on the Park Button from Menu Bar at the left side of the app screen.&lt;/b&gt;&lt;br&gt;&#xa;By clicking on the button, you will see a page where you&apos;ll have to enter the details of the app.&lt;/li&gt;&lt;br&gt;&#xa;&lt;li&gt;&lt;b&gt;Enter the details of the Vehicle:&lt;/b&gt;&#xa;&lt;ol&gt;&#xa;&lt;li&gt;Enter the &lt;b&gt;Vehicle Identification Number(VIN)&lt;/b&gt; of the vehicle.&lt;/li&gt;&#xa;&lt;li&gt;Select the &lt;b&gt;Type&lt;/b&gt; of the vehicle (Car, Truck or Bike).&lt;/li&gt;&#xa;&lt;li&gt;Select the &lt;b&gt;Color&lt;/b&gt; of the vehicle from the list of available options &lt;br&gt;&lt;i&gt;(if you think the vehicle has a different color, select the color that matches best).&lt;/i&gt;&lt;/li&gt;&lt;br&gt;&#xa;&lt;/ol&gt;&#xa;&lt;li&gt;Click on &lt;b&gt;CONFIRM&lt;/b&gt; button.&lt;br&gt;&#xa;Hurray! The vehicle is successfully parked.&lt;/li&gt;&lt;br&gt;&#xa;&lt;li&gt;A &lt;b&gt;Ticket ID&lt;/b&gt; is generated for the parked vehicle which is given to the owner of the vehicle.&lt;/li&gt;&#xa;&lt;/ul&gt;"/>
+                            <Property name="text" type="java.lang.String" value="&lt;html&gt;&#xa;To Park a Vehicle into the Parking Lot Area: &lt;br&gt;&#xa;&lt;ul&gt;&#xa;&lt;li&gt;&lt;b&gt;Click on the Park Button from Menu Bar at the left side of the app screen.&lt;/b&gt;&lt;br&gt;&#xa;By clicking on the button, you will see a page where you&apos;ll have to enter the details of the app.&lt;/li&gt;&lt;br&gt;&#xa;&lt;li&gt;&lt;b&gt;Enter the details of the Vehicle:&lt;/b&gt;&#xa;&lt;ol&gt;&#xa;&lt;li&gt;Enter the &lt;b&gt;Vehicle Identification Number(VIN)&lt;/b&gt; of the vehicle.&lt;/li&gt;&#xa;&lt;li&gt;Select the &lt;b&gt;Type&lt;/b&gt; of the vehicle (Car, Truck or Bike).&lt;/li&gt;&#xa;&lt;li&gt;Select the &lt;b&gt;Color&lt;/b&gt; of the vehicle from the list of available options &lt;br&gt;&lt;i&gt;(if you think the vehicle has a different color, select the color that matches best).&lt;/i&gt;&lt;/li&gt;&lt;br&gt;&#xa;&lt;/ol&gt;&#xa;&lt;li&gt;Click on &lt;b&gt;CONFIRM&lt;/b&gt; button.&lt;br&gt;&#xa;Hurray! The vehicle is successfully parked.&lt;/li&gt;&lt;br&gt;&#xa;&lt;li&gt;A &lt;b&gt;Ticket ID&lt;/b&gt; is generated for the parked vehicle which is given to the owner of the vehicle.&lt;/li&gt;&#xa;&lt;/ul&gt;&lt;br&gt;&#xa;&lt;hr&gt;"/>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -1642,7 +1642,7 @@
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Calibri" size="14" style="0"/>
                             </Property>
-                            <Property name="text" type="java.lang.String" value="&lt;html&gt;&#xa;To release (unpark) a vehicle from the parking lot area, you&apos;ll need a &lt;b&gt;valid Ticket ID&lt;/b&gt;.&lt;br&gt;&#xa;&lt;ul&gt;&#xa;&lt;li&gt;Enter the &lt;b&gt;Ticket ID&lt;/b&gt; of the vehicle to be released.&lt;/li&gt;&lt;br&gt;&#xa;&lt;li&gt;Click on &lt;b&gt;CONFIRM&lt;/b&gt; button.&lt;/li&gt;&lt;br&gt;&#xa;&lt;li&gt;If the entered Ticket ID was valid, you will see a message showing that the vehicle is successfully released from the parking lot.&lt;/li&gt;&#xa;&lt;/ul&gt;"/>
+                            <Property name="text" type="java.lang.String" value="&lt;html&gt;&#xa;To release (unpark) a vehicle from the parking lot area, you&apos;ll need a &lt;b&gt;valid Ticket ID&lt;/b&gt;.&lt;br&gt;&#xa;&lt;ul&gt;&#xa;&lt;li&gt;Enter the &lt;b&gt;Ticket ID&lt;/b&gt; of the vehicle to be released.&lt;/li&gt;&lt;br&gt;&#xa;&lt;li&gt;Click on &lt;b&gt;CONFIRM&lt;/b&gt; button.&lt;/li&gt;&lt;br&gt;&#xa;&lt;li&gt;If the entered Ticket ID was valid, you will see a message showing that the vehicle is successfully released from the parking lot.&lt;/li&gt;&#xa;&lt;/ul&gt;&lt;br&gt;&#xa;&lt;hr&gt;"/>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
@@ -1670,6 +1670,21 @@
                       </Constraints>
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout"/>
+                      <SubComponents>
+                        <Component class="javax.swing.JLabel" name="viewInsLabel">
+                          <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Calibri" size="14" style="0"/>
+                            </Property>
+                            <Property name="text" type="java.lang.String" value="&lt;html&gt;&#xa;The status of the Parking Lot can viewed in three ways:&#xa;&lt;ol&gt;&#xa;&lt;li&gt;View No. of Open Slots&lt;/li&gt;&#xa;&lt;li&gt;Display Available Slots&lt;/li&gt;&#xa;&lt;li&gt;Display Occupied Slots&lt;/li&gt;&#xa;&lt;/ol&gt;&#xa;&lt;hr&gt;&#xa;&lt;h2&gt;View No. of Open Slots&lt;/h2&gt;&#xa;This section tells the current no. of open slots for a particular type of vehicle.&lt;br&gt;&#xa;Simply select the type of vehicle and you&apos;ll get to know the no. of open slots that are currently available for that type of vehicle.&#xa;&lt;br&gt;&lt;br&gt;&#xa;&lt;hr&gt;&#xa;&lt;h2&gt;Display Available Slots&lt;/h2&gt;&#xa;Unlike &lt;b&gt;&apos;View No. of Open Slots&apos;&lt;/b&gt; section, this section actually display the locations of the slots that are currently available for a vehicle type.&lt;br&gt;&#xa;Just select the type of vehicle and the current available slots for that vehicle type will be displayed.&#xa;&lt;br&gt;&lt;br&gt;&#xa;&lt;hr&gt;&#xa;&lt;h2&gt;Display Occupied Slots&lt;/h2&gt;&#xa;This section, located at the right hand side of the &lt;b&gt;View&lt;/b&gt; Page, displays the slots that are currently occupied by a particular type of vehicle.&lt;br&gt;&#xa;To view the occupied slots of any vehicle type, select the type of vehicle its currently occupied slots will be displayed.&#xa;&lt;br&gt;&lt;br&gt;&#xa;&lt;hr&gt;"/>
+                          </Properties>
+                          <Constraints>
+                            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
+                              <GridBagConstraints gridX="-1" gridY="-1" gridWidth="1" gridHeight="1" fill="0" ipadX="0" ipadY="0" insetsTop="20" insetsLeft="20" insetsBottom="0" insetsRight="0" anchor="23" weightX="0.1" weightY="0.1"/>
+                            </Constraint>
+                          </Constraints>
+                        </Component>
+                      </SubComponents>
                     </Container>
                     <Container class="javax.swing.JPanel" name="upcomingFeatures">
                       <Properties>

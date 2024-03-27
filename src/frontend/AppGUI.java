@@ -90,6 +90,7 @@ public class AppGUI extends javax.swing.JFrame {
         releasingHelp = new javax.swing.JPanel();
         releaseInsLabel = new javax.swing.JLabel();
         viewingHelp = new javax.swing.JPanel();
+        viewInsLabel = new javax.swing.JLabel();
         upcomingFeatures = new javax.swing.JPanel();
         aboutUs = new javax.swing.JPanel();
 
@@ -646,7 +647,7 @@ public class AppGUI extends javax.swing.JFrame {
         parkingHelp.setLayout(new java.awt.GridBagLayout());
 
         parkInsLabel.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        parkInsLabel.setText("<html>\nTo Park a Vehicle into the Parking Lot Area: <br>\n<ul>\n<li><b>Click on the Park Button from Menu Bar at the left side of the app screen.</b><br>\nBy clicking on the button, you will see a page where you'll have to enter the details of the app.</li><br>\n<li><b>Enter the details of the Vehicle:</b>\n<ol>\n<li>Enter the <b>Vehicle Identification Number(VIN)</b> of the vehicle.</li>\n<li>Select the <b>Type</b> of the vehicle (Car, Truck or Bike).</li>\n<li>Select the <b>Color</b> of the vehicle from the list of available options <br><i>(if you think the vehicle has a different color, select the color that matches best).</i></li><br>\n</ol>\n<li>Click on <b>CONFIRM</b> button.<br>\nHurray! The vehicle is successfully parked.</li><br>\n<li>A <b>Ticket ID</b> is generated for the parked vehicle which is given to the owner of the vehicle.</li>\n</ul>");
+        parkInsLabel.setText("<html>\nTo Park a Vehicle into the Parking Lot Area: <br>\n<ul>\n<li><b>Click on the Park Button from Menu Bar at the left side of the app screen.</b><br>\nBy clicking on the button, you will see a page where you'll have to enter the details of the app.</li><br>\n<li><b>Enter the details of the Vehicle:</b>\n<ol>\n<li>Enter the <b>Vehicle Identification Number(VIN)</b> of the vehicle.</li>\n<li>Select the <b>Type</b> of the vehicle (Car, Truck or Bike).</li>\n<li>Select the <b>Color</b> of the vehicle from the list of available options <br><i>(if you think the vehicle has a different color, select the color that matches best).</i></li><br>\n</ol>\n<li>Click on <b>CONFIRM</b> button.<br>\nHurray! The vehicle is successfully parked.</li><br>\n<li>A <b>Ticket ID</b> is generated for the parked vehicle which is given to the owner of the vehicle.</li>\n</ul><br>\n<hr>");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -662,7 +663,7 @@ public class AppGUI extends javax.swing.JFrame {
         releasingHelp.setLayout(new java.awt.GridBagLayout());
 
         releaseInsLabel.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        releaseInsLabel.setText("<html>\nTo release (unpark) a vehicle from the parking lot area, you'll need a <b>valid Ticket ID</b>.<br>\n<ul>\n<li>Enter the <b>Ticket ID</b> of the vehicle to be released.</li><br>\n<li>Click on <b>CONFIRM</b> button.</li><br>\n<li>If the entered Ticket ID was valid, you will see a message showing that the vehicle is successfully released from the parking lot.</li>\n</ul>");
+        releaseInsLabel.setText("<html>\nTo release (unpark) a vehicle from the parking lot area, you'll need a <b>valid Ticket ID</b>.<br>\n<ul>\n<li>Enter the <b>Ticket ID</b> of the vehicle to be released.</li><br>\n<li>Click on <b>CONFIRM</b> button.</li><br>\n<li>If the entered Ticket ID was valid, you will see a message showing that the vehicle is successfully released from the parking lot.</li>\n</ul><br>\n<hr>");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -676,6 +677,16 @@ public class AppGUI extends javax.swing.JFrame {
 
         viewingHelp.setPreferredSize(new java.awt.Dimension(812, 460));
         viewingHelp.setLayout(new java.awt.GridBagLayout());
+
+        viewInsLabel.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        viewInsLabel.setText("<html>\nThe status of the Parking Lot can viewed in three ways:\n<ol>\n<li>View No. of Open Slots</li>\n<li>Display Available Slots</li>\n<li>Display Occupied Slots</li>\n</ol>\n<hr>\n<h2>View No. of Open Slots</h2>\nThis section tells the current no. of open slots for a particular type of vehicle.<br>\nSimply select the type of vehicle and you'll get to know the no. of open slots that are currently available for that type of vehicle.\n<br><br>\n<hr>\n<h2>Display Available Slots</h2>\nUnlike <b>'View No. of Open Slots'</b> section, this section actually display the locations of the slots that are currently available for a vehicle type.<br>\nJust select the type of vehicle and the current available slots for that vehicle type will be displayed.\n<br><br>\n<hr>\n<h2>Display Occupied Slots</h2>\nThis section, located at the right hand side of the <b>View</b> Page, displays the slots that are currently occupied by a particular type of vehicle.<br>\nTo view the occupied slots of any vehicle type, select the type of vehicle its currently occupied slots will be displayed.\n<br><br>\n<hr>");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
+        gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.weighty = 0.1;
+        gridBagConstraints.insets = new java.awt.Insets(20, 20, 0, 0);
+        viewingHelp.add(viewInsLabel, gridBagConstraints);
+
         helpTabs.addTab("Checking Parking Lot Status", new javax.swing.ImageIcon(getClass().getResource("/images/system-regular-14-article (1).png")), viewingHelp); // NOI18N
 
         upcomingFeatures.setPreferredSize(new java.awt.Dimension(812, 460));
@@ -913,6 +924,7 @@ public class AppGUI extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> vehicleTypeBox2;
     private javax.swing.JComboBox<String> vehicleTypeBox3;
     private javax.swing.JButton viewButton;
+    private javax.swing.JLabel viewInsLabel;
     private javax.swing.JPanel viewPanel;
     private javax.swing.JPanel viewingHelp;
     private javax.swing.JLabel vinLabel;
