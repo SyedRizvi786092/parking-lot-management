@@ -5,6 +5,3 @@ It has been written in **Java** Programming Language.<br><br>
 - Swing (JFC API)
 - MySQL & JDBC
 - NetBeans IDE<br><br>
-### Authors:
-- Mojiz Hasan
-- Anushka Dixit
