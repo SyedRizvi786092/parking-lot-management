@@ -13,6 +13,8 @@ import java.awt.*;
 import javax.swing.*;
 import javax.imageio.*;
 import java.io.*;
+import backend.*;
+import java.util.Arrays;
 
 public class AppGUI extends javax.swing.JFrame {
 
@@ -37,6 +39,7 @@ public class AppGUI extends javax.swing.JFrame {
         java.awt.GridBagConstraints gridBagConstraints;
 
         vehicleType = new javax.swing.ButtonGroup();
+        parkDialog = new javax.swing.JDialog();
         loginPanel = new javax.swing.JPanel();
         loginBox = new javax.swing.JPanel();
         uNameLabel = new javax.swing.JLabel();
@@ -64,7 +67,7 @@ public class AppGUI extends javax.swing.JFrame {
         availSlotsPanel = new javax.swing.JPanel();
         vehicleTypeBox3 = new javax.swing.JComboBox<>();
         availSlotsPanelJr = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        availVehicles = new javax.swing.JLabel();
         occSlotsPanel = new javax.swing.JPanel();
         vehicleTypeBox2 = new javax.swing.JComboBox<>();
         occSlotsPanelJr = new javax.swing.JPanel();
@@ -93,6 +96,20 @@ public class AppGUI extends javax.swing.JFrame {
         viewInsLabel = new javax.swing.JLabel();
         upcomingFeatures = new javax.swing.JPanel();
         aboutUs = new javax.swing.JPanel();
+
+        parkDialog.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        parkDialog.setTitle("MESSAGE");
+
+        javax.swing.GroupLayout parkDialogLayout = new javax.swing.GroupLayout(parkDialog.getContentPane());
+        parkDialog.getContentPane().setLayout(parkDialogLayout);
+        parkDialogLayout.setHorizontalGroup(
+            parkDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        parkDialogLayout.setVerticalGroup(
+            parkDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("PARK IT");
@@ -393,7 +410,7 @@ public class AppGUI extends javax.swing.JFrame {
 
         availSlotsPanelJr.setPreferredSize(new java.awt.Dimension(110, 110));
 
-        jLabel2.setText("The currently available slots will be displayed here :)");
+        availVehicles.setText("The currently available slots will be displayed here :)");
 
         javax.swing.GroupLayout availSlotsPanelJrLayout = new javax.swing.GroupLayout(availSlotsPanelJr);
         availSlotsPanelJr.setLayout(availSlotsPanelJrLayout);
@@ -403,7 +420,7 @@ public class AppGUI extends javax.swing.JFrame {
             .addGroup(availSlotsPanelJrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(availSlotsPanelJrLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel2)
+                    .addComponent(availVehicles)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
         availSlotsPanelJrLayout.setVerticalGroup(
@@ -412,7 +429,7 @@ public class AppGUI extends javax.swing.JFrame {
             .addGroup(availSlotsPanelJrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(availSlotsPanelJrLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel2)
+                    .addComponent(availVehicles)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
@@ -573,6 +590,11 @@ public class AppGUI extends javax.swing.JFrame {
         parkConfirmButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         parkConfirmButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         parkConfirmButton.setPreferredSize(new java.awt.Dimension(90, 35));
+        parkConfirmButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                parkConfirmButtonActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
@@ -758,8 +780,17 @@ public class AppGUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-        CardLayout c = (CardLayout)getContentPane().getLayout();
-        c.show(this.getContentPane(), "app");
+        
+        LoginAgent la=new LoginAgent();
+//        System.out.println(uNameText.getText());
+//        System.out.println(Arrays.toString(pwText.getPassword()));
+        if(la.authenticateUser(uNameText.getText(),String.valueOf(pwText.getPassword()))) {
+            CardLayout c = (CardLayout)getContentPane().getLayout();
+            c.show(this.getContentPane(), "app");
+        }
+        else {
+            errLabel.setText("Wrong Username or Password!!!");
+        }
     }//GEN-LAST:event_loginButtonActionPerformed
 
     private void logoutLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutLabelMouseClicked
@@ -821,8 +852,13 @@ public class AppGUI extends javax.swing.JFrame {
         if(vType.equals("Select Vehicle Type")==false) {
             availSlotsPanelJr.setBorder(javax.swing.BorderFactory.createTitledBorder("Available "+vType+" Slots"));
             availSlotsPanelJr.setVisible(true);
+            availVehicles.setText(vType);
         }
     }//GEN-LAST:event_vehicleTypeBox3ActionPerformed
+
+    private void parkConfirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_parkConfirmButtonActionPerformed
+        JOptionPane.showMessageDialog(parkDialog, "Your vehicle has been parked successfully!");
+    }//GEN-LAST:event_parkConfirmButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -876,6 +912,7 @@ public class AppGUI extends javax.swing.JFrame {
     private javax.swing.JPanel appPanel;
     private javax.swing.JPanel availSlotsPanel;
     private javax.swing.JPanel availSlotsPanelJr;
+    private javax.swing.JLabel availVehicles;
     private javax.swing.JRadioButton bikeRButton;
     private javax.swing.JRadioButton carRButton;
     private javax.swing.JPanel cardsPanel;
@@ -887,7 +924,6 @@ public class AppGUI extends javax.swing.JFrame {
     private javax.swing.JLabel imageLabel;
     private javax.swing.JPanel imagePanel;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel loginBox;
     private javax.swing.JButton loginButton;
     private javax.swing.JPanel loginPanel;
@@ -900,6 +936,7 @@ public class AppGUI extends javax.swing.JFrame {
     private javax.swing.JPanel openSlotsPanel;
     private javax.swing.JButton parkButton;
     private javax.swing.JButton parkConfirmButton;
+    private javax.swing.JDialog parkDialog;
     private javax.swing.JLabel parkInsLabel;
     private javax.swing.JPanel parkPanel;
     private javax.swing.JPanel parkingHelp;
