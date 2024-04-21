@@ -13,8 +13,9 @@ import java.awt.*;
 import javax.swing.*;
 import javax.imageio.*;
 import java.io.*;
+import java.util.Enumeration;
 import backend.*;
-import java.util.Arrays;
+import logic.*;
 
 public class AppGUI extends javax.swing.JFrame {
 
@@ -782,9 +783,10 @@ public class AppGUI extends javax.swing.JFrame {
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         
         LoginAgent la=new LoginAgent();
-//        System.out.println(uNameText.getText());
-//        System.out.println(Arrays.toString(pwText.getPassword()));
         if(la.authenticateUser(uNameText.getText(),String.valueOf(pwText.getPassword()))) {
+            uNameText.setText("");
+            pwText.setText("");
+            errLabel.setText("");
             CardLayout c = (CardLayout)getContentPane().getLayout();
             c.show(this.getContentPane(), "app");
         }
@@ -857,9 +859,26 @@ public class AppGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_vehicleTypeBox3ActionPerformed
 
     private void parkConfirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_parkConfirmButtonActionPerformed
-        JOptionPane.showMessageDialog(parkDialog, "Your vehicle has been parked successfully!");
+        Main m = new Main();
+        String ticketId = m.generateTicketId(vinText.getText(), getSelectedButtonText(vehicleType), (String)vehicleColorBox.getSelectedItem());
+        if(!ticketId.equals("Full")) {
+            JOptionPane.showMessageDialog(parkDialog, "Your vehicle has been parked successfully!\nTicket ID: "+ticketId);
+        }
+        else {
+            JOptionPane.showMessageDialog(parkDialog, "Sorry, the "+getSelectedButtonText(vehicleType)+"slots are currently full!");
+        }
     }//GEN-LAST:event_parkConfirmButtonActionPerformed
-
+    
+    private String getSelectedButtonText(ButtonGroup buttonGroup) {
+        for (Enumeration<AbstractButton> buttons = buttonGroup.getElements(); buttons.hasMoreElements();) {
+            AbstractButton button = buttons.nextElement();
+            if (button.isSelected()) {
+                return button.getText();
+            }
+        }
+        return null;
+    }
+    
     /**
      * @param args the command line arguments
      */
