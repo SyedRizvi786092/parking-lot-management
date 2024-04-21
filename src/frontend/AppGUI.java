@@ -865,7 +865,7 @@ public class AppGUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(parkDialog, "Your vehicle has been parked successfully!\nTicket ID: "+ticketId);
         }
         else {
-            JOptionPane.showMessageDialog(parkDialog, "Sorry, the "+getSelectedButtonText(vehicleType)+"slots are currently full!");
+            JOptionPane.showMessageDialog(parkDialog, "Sorry, the "+getSelectedButtonText(vehicleType)+" slots are currently full!");
         }
     }//GEN-LAST:event_parkConfirmButtonActionPerformed
     

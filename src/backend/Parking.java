@@ -14,8 +14,8 @@ import java.sql.SQLException;
  * @author mudas
  */
 
-public class ParkRelease {
-    public String parkVehicle(String type) {
+public class Parking {
+    public String parkVehicle(String vin, String type) {
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
@@ -24,15 +24,21 @@ public class ParkRelease {
             ConnectDatabase cb = new ConnectDatabase();
             connection = cb.connect();
             
-            String sql = "SELECT * FROM appdata.slot WHERE stype = ? LIMIT 1";
+            String sql = "SELECT * FROM appdata.slot WHERE stype = ? AND vin IS NULL LIMIT 1";
             statement = connection.prepareStatement(sql);
             statement.setString(1, type);
             
             resultSet = statement.executeQuery();
             
             if(resultSet.next()) {
-                String fno = resultSet.getString(1);
-                String sno = resultSet.getString(2);
+                int fno = resultSet.getInt(1);
+                int sno = resultSet.getInt(2);
+                sql = "UPDATE appdata.slot SET vin = ? WHERE floorno = ? AND slotno = ?";
+                statement = connection.prepareStatement(sql);
+                statement.setString(1, vin);
+                statement.setInt(2, fno);
+                statement.setInt(3, sno);
+                statement.execute();
                 return fno+"_"+sno;
             } else return "";
         } catch (SQLException e) {
@@ -93,5 +99,52 @@ public class ParkRelease {
             }
         }
         return -1;
+    }
+    
+    public void registerVehicle(String vin, String type, String color) {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        
+        try {
+            ConnectDatabase cb = new ConnectDatabase();
+            connection = cb.connect();
+            
+            String sql = "SELECT * FROM appdata.vehicle WHERE vin = ?";
+            statement = connection.prepareStatement(sql);
+            statement.setString(1, vin);
+            
+            resultSet = statement.executeQuery();
+            
+            if(resultSet.next()) {
+                sql = "UPDATE appdata.vehicle SET status = 1 WHERE vin = ?";
+                statement = connection.prepareStatement(sql);
+                statement.setString(1, vin);
+            } else {
+                sql = "INSERT INTO appdata.vehicle VALUES (?,?,?,1)";
+                statement = connection.prepareStatement(sql);
+                statement.setString(1, vin);
+                statement.setString(2, type);
+                statement.setString(3, color);
+            }
+            statement.execute();
+    } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        finally {
+            try {
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+                if (statement != null) {
+                    statement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

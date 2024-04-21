@@ -15,10 +15,11 @@ public class Main {
     static String parkingLotId = "PL92";
     
     public String generateTicketId(String vin, String vType, String vColor) {
-        ParkRelease pr = new ParkRelease();
-        String fnoSno = pr.parkVehicle(vType);
+        Parking pr = new Parking();
+        String fnoSno = pr.parkVehicle(vin,vType);
         if(!fnoSno.equals("")) {
-            return Integer.toString(pr.countVehicles()+1)+"_"+parkingLotId+"_"+fnoSno;
+            pr.registerVehicle(vin, vType, vColor);
+            return Integer.toString(pr.countVehicles())+"_"+parkingLotId+"_"+fnoSno;
         }
         else {
             return "Full";
