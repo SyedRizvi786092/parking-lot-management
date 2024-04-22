@@ -40,7 +40,7 @@ public class AppGUI extends javax.swing.JFrame {
         java.awt.GridBagConstraints gridBagConstraints;
 
         vehicleType = new javax.swing.ButtonGroup();
-        parkDialog = new javax.swing.JDialog();
+        msgDialog = new javax.swing.JDialog();
         loginPanel = new javax.swing.JPanel();
         loginBox = new javax.swing.JPanel();
         uNameLabel = new javax.swing.JLabel();
@@ -98,17 +98,17 @@ public class AppGUI extends javax.swing.JFrame {
         upcomingFeatures = new javax.swing.JPanel();
         aboutUs = new javax.swing.JPanel();
 
-        parkDialog.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        parkDialog.setTitle("MESSAGE");
+        msgDialog.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        msgDialog.setTitle("MESSAGE");
 
-        javax.swing.GroupLayout parkDialogLayout = new javax.swing.GroupLayout(parkDialog.getContentPane());
-        parkDialog.getContentPane().setLayout(parkDialogLayout);
-        parkDialogLayout.setHorizontalGroup(
-            parkDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout msgDialogLayout = new javax.swing.GroupLayout(msgDialog.getContentPane());
+        msgDialog.getContentPane().setLayout(msgDialogLayout);
+        msgDialogLayout.setHorizontalGroup(
+            msgDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 400, Short.MAX_VALUE)
         );
-        parkDialogLayout.setVerticalGroup(
-            parkDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        msgDialogLayout.setVerticalGroup(
+            msgDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 300, Short.MAX_VALUE)
         );
 
@@ -648,6 +648,11 @@ public class AppGUI extends javax.swing.JFrame {
         releaseConfirmButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         releaseConfirmButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         releaseConfirmButton.setPreferredSize(new java.awt.Dimension(90, 35));
+        releaseConfirmButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                releaseConfirmButtonActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
@@ -862,12 +867,18 @@ public class AppGUI extends javax.swing.JFrame {
         Main m = new Main();
         String ticketId = m.generateTicketId(vinText.getText(), getSelectedButtonText(vehicleType), (String)vehicleColorBox.getSelectedItem());
         if(!ticketId.equals("Full")) {
-            JOptionPane.showMessageDialog(parkDialog, "Your vehicle has been parked successfully!\nTicket ID: "+ticketId);
+            JOptionPane.showMessageDialog(msgDialog, "Your vehicle has been parked successfully!\nTicket ID: "+ticketId);
         }
         else {
-            JOptionPane.showMessageDialog(parkDialog, "Sorry, the "+getSelectedButtonText(vehicleType)+" slots are currently full!");
+            JOptionPane.showMessageDialog(msgDialog, "Sorry, the "+getSelectedButtonText(vehicleType)+" slots are currently full!");
         }
     }//GEN-LAST:event_parkConfirmButtonActionPerformed
+
+    private void releaseConfirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_releaseConfirmButtonActionPerformed
+        Main m = new Main();
+        String msg = m.unPark(ticketText.getText());
+        JOptionPane.showMessageDialog(msgDialog, msg);
+    }//GEN-LAST:event_releaseConfirmButtonActionPerformed
     
     private String getSelectedButtonText(ButtonGroup buttonGroup) {
         for (Enumeration<AbstractButton> buttons = buttonGroup.getElements(); buttons.hasMoreElements();) {
@@ -949,13 +960,13 @@ public class AppGUI extends javax.swing.JFrame {
     private javax.swing.JLabel loginPicLabel;
     private javax.swing.JLabel logoutLabel;
     private javax.swing.JPanel menuPanel;
+    private javax.swing.JDialog msgDialog;
     private javax.swing.JPanel occSlotsPanel;
     private javax.swing.JPanel occSlotsPanelJr;
     private javax.swing.JLabel openSlotsLabel;
     private javax.swing.JPanel openSlotsPanel;
     private javax.swing.JButton parkButton;
     private javax.swing.JButton parkConfirmButton;
-    private javax.swing.JDialog parkDialog;
     private javax.swing.JLabel parkInsLabel;
     private javax.swing.JPanel parkPanel;
     private javax.swing.JPanel parkingHelp;

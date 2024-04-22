@@ -11,7 +11,7 @@ import java.sql.SQLException;
 
 /**
  *
- * @author mudas
+ * @author Mojiz
  */
 
 public class Parking {
@@ -101,7 +101,7 @@ public class Parking {
         return -1;
     }
     
-    public void registerVehicle(String vin, String type, String color) {
+    public void registerVehicle(String vin, String type, String color, String ticketId) {
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
@@ -121,11 +121,12 @@ public class Parking {
                 statement = connection.prepareStatement(sql);
                 statement.setString(1, vin);
             } else {
-                sql = "INSERT INTO appdata.vehicle VALUES (?,?,?,1)";
+                sql = "INSERT INTO appdata.vehicle VALUES (?,?,?,1,?)";
                 statement = connection.prepareStatement(sql);
                 statement.setString(1, vin);
                 statement.setString(2, type);
                 statement.setString(3, color);
+                statement.setString(4, ticketId);
             }
             statement.execute();
     } catch (SQLException e) {
