@@ -11,15 +11,18 @@ package logic;
 
 import backend.*;
 import java.sql.*;
+import java.io.*;
+import java.util.Properties;
 
 public class Main {
-    static String parkingLotId = "PL92";
+    private static final String PARKING_LOT_ID = "PL92";
+    private static final String PROPERTIES_FILE = "M:/Coding/Java/Minor Project/ParkingLotManagementSystem/src/logic/vehicle_count.properties";
     
     public String generateTicketId(String vin, String vType, String vColor) {
         Parking pr = new Parking();
         String fnoSno = pr.parkVehicle(vin,vType);
         if(!fnoSno.equals("")) {
-            String ticketId = Integer.toString(pr.countVehicles())+"_"+parkingLotId+"_"+fnoSno;
+            String ticketId = Integer.toString(countVehicles()+1)+"_"+PARKING_LOT_ID+"_"+fnoSno;
             pr.registerVehicle(vin, vType, vColor, ticketId);
             return ticketId;
         }
@@ -55,7 +58,27 @@ public class Main {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        System.out.println(checkSlot);
-        return id.equals(parkingLotId) && checkSlot;
+        return id.equals(PARKING_LOT_ID) && checkSlot;
+    }
+    
+    private int countVehicles() {
+        Properties props = new Properties();
+        
+        try (InputStream input = new FileInputStream(PROPERTIES_FILE)) {
+            props.load(input);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+        int vehicleCount = Integer.parseInt(props.getProperty("vehicleCount"));
+        props.setProperty("vehicleCount", String.valueOf(vehicleCount+1));
+        
+        try (OutputStream output = new FileOutputStream(PROPERTIES_FILE)) {
+            props.store(output, null);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+        return vehicleCount;
     }
 }

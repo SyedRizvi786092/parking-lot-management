@@ -62,45 +62,6 @@ public class Parking {
         return "Exception";
     }
     
-    public int countVehicles() {
-        Connection connection = null;
-        PreparedStatement statement = null;
-        ResultSet resultSet = null;
-        int count=0;
-        
-        try {
-            ConnectDatabase cb = new ConnectDatabase();
-            connection = cb.connect();
-            
-            String sql = "SELECT * FROM appdata.vehicle";
-            statement = connection.prepareStatement(sql);
-            
-            resultSet = statement.executeQuery();
-            while(resultSet.next()) {
-                count++;
-            }
-            return count;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        finally {
-            try {
-                if (resultSet != null) {
-                    resultSet.close();
-                }
-                if (statement != null) {
-                    statement.close();
-                }
-                if (connection != null) {
-                    connection.close();
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-        return -1;
-    }
-    
     public void registerVehicle(String vin, String type, String color, String ticketId) {
         Connection connection = null;
         PreparedStatement statement = null;
@@ -117,9 +78,10 @@ public class Parking {
             resultSet = statement.executeQuery();
             
             if(resultSet.next()) {
-                sql = "UPDATE appdata.vehicle SET status = 1 WHERE vin = ?";
+                sql = "UPDATE appdata.vehicle SET status = 1, ticket_id = ? WHERE vin = ?";
                 statement = connection.prepareStatement(sql);
-                statement.setString(1, vin);
+                statement.setString(1, ticketId);
+                statement.setString(2, vin);
             } else {
                 sql = "INSERT INTO appdata.vehicle VALUES (?,?,?,1,?)";
                 statement = connection.prepareStatement(sql);

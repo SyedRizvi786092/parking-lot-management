@@ -68,11 +68,11 @@ public class AppGUI extends javax.swing.JFrame {
         availSlotsPanel = new javax.swing.JPanel();
         vehicleTypeBox3 = new javax.swing.JComboBox<>();
         availSlotsPanelJr = new javax.swing.JPanel();
-        availVehicles = new javax.swing.JLabel();
+        availSlotsLabel = new javax.swing.JLabel();
         occSlotsPanel = new javax.swing.JPanel();
         vehicleTypeBox2 = new javax.swing.JComboBox<>();
         occSlotsPanelJr = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        occSlotsLabel = new javax.swing.JLabel();
         parkPanel = new javax.swing.JPanel();
         vinLabel = new javax.swing.JLabel();
         vinText = new javax.swing.JTextField();
@@ -411,7 +411,7 @@ public class AppGUI extends javax.swing.JFrame {
 
         availSlotsPanelJr.setPreferredSize(new java.awt.Dimension(110, 110));
 
-        availVehicles.setText("The currently available slots will be displayed here :)");
+        availSlotsLabel.setText("The currently available slots will be displayed here :)");
 
         javax.swing.GroupLayout availSlotsPanelJrLayout = new javax.swing.GroupLayout(availSlotsPanelJr);
         availSlotsPanelJr.setLayout(availSlotsPanelJrLayout);
@@ -421,7 +421,7 @@ public class AppGUI extends javax.swing.JFrame {
             .addGroup(availSlotsPanelJrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(availSlotsPanelJrLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(availVehicles)
+                    .addComponent(availSlotsLabel)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
         availSlotsPanelJrLayout.setVerticalGroup(
@@ -430,7 +430,7 @@ public class AppGUI extends javax.swing.JFrame {
             .addGroup(availSlotsPanelJrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(availSlotsPanelJrLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(availVehicles)
+                    .addComponent(availSlotsLabel)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
@@ -476,7 +476,7 @@ public class AppGUI extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
         occSlotsPanel.add(vehicleTypeBox2, gridBagConstraints);
 
-        jLabel1.setText("The currently occupied slots will be displayed here :)");
+        occSlotsLabel.setText("The currently occupied slots will be displayed here :)");
 
         javax.swing.GroupLayout occSlotsPanelJrLayout = new javax.swing.GroupLayout(occSlotsPanelJr);
         occSlotsPanelJr.setLayout(occSlotsPanelJrLayout);
@@ -486,7 +486,7 @@ public class AppGUI extends javax.swing.JFrame {
             .addGroup(occSlotsPanelJrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(occSlotsPanelJrLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel1)
+                    .addComponent(occSlotsLabel)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
         occSlotsPanelJrLayout.setVerticalGroup(
@@ -495,7 +495,7 @@ public class AppGUI extends javax.swing.JFrame {
             .addGroup(occSlotsPanelJrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(occSlotsPanelJrLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel1)
+                    .addComponent(occSlotsLabel)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
@@ -859,7 +859,6 @@ public class AppGUI extends javax.swing.JFrame {
         if(vType.equals("Select Vehicle Type")==false) {
             availSlotsPanelJr.setBorder(javax.swing.BorderFactory.createTitledBorder("Available "+vType+" Slots"));
             availSlotsPanelJr.setVisible(true);
-            availVehicles.setText(vType);
         }
     }//GEN-LAST:event_vehicleTypeBox3ActionPerformed
 
@@ -867,17 +866,17 @@ public class AppGUI extends javax.swing.JFrame {
         Main m = new Main();
         String ticketId = m.generateTicketId(vinText.getText(), getSelectedButtonText(vehicleType), (String)vehicleColorBox.getSelectedItem());
         if(!ticketId.equals("Full")) {
-            JOptionPane.showMessageDialog(msgDialog, "Your vehicle has been parked successfully!\nTicket ID: "+ticketId);
+            JOptionPane.showMessageDialog(this, "Your vehicle has been parked successfully!\nTicket ID: "+ticketId);
         }
         else {
-            JOptionPane.showMessageDialog(msgDialog, "Sorry, the "+getSelectedButtonText(vehicleType)+" slots are currently full!");
+            JOptionPane.showMessageDialog(this, "Sorry, the "+getSelectedButtonText(vehicleType)+" slots are currently full!");
         }
     }//GEN-LAST:event_parkConfirmButtonActionPerformed
 
     private void releaseConfirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_releaseConfirmButtonActionPerformed
         Main m = new Main();
         String msg = m.unPark(ticketText.getText());
-        JOptionPane.showMessageDialog(msgDialog, msg);
+        JOptionPane.showMessageDialog(this, msg);
     }//GEN-LAST:event_releaseConfirmButtonActionPerformed
     
     private String getSelectedButtonText(ButtonGroup buttonGroup) {
@@ -940,9 +939,9 @@ public class AppGUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel aboutUs;
     private javax.swing.JPanel appPanel;
+    private javax.swing.JLabel availSlotsLabel;
     private javax.swing.JPanel availSlotsPanel;
     private javax.swing.JPanel availSlotsPanelJr;
-    private javax.swing.JLabel availVehicles;
     private javax.swing.JRadioButton bikeRButton;
     private javax.swing.JRadioButton carRButton;
     private javax.swing.JPanel cardsPanel;
@@ -953,7 +952,6 @@ public class AppGUI extends javax.swing.JFrame {
     private javax.swing.JTabbedPane helpTabs;
     private javax.swing.JLabel imageLabel;
     private javax.swing.JPanel imagePanel;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel loginBox;
     private javax.swing.JButton loginButton;
     private javax.swing.JPanel loginPanel;
@@ -961,6 +959,7 @@ public class AppGUI extends javax.swing.JFrame {
     private javax.swing.JLabel logoutLabel;
     private javax.swing.JPanel menuPanel;
     private javax.swing.JDialog msgDialog;
+    private javax.swing.JLabel occSlotsLabel;
     private javax.swing.JPanel occSlotsPanel;
     private javax.swing.JPanel occSlotsPanelJr;
     private javax.swing.JLabel openSlotsLabel;
