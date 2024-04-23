@@ -8,7 +8,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import logic.*;
 
 /**
  *
@@ -33,21 +32,6 @@ public class Releasing {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-//        finally {
-//            try {
-//                if (resultSet != null) {
-//                    resultSet.close();
-//                }
-//                if (statement != null) {
-//                    statement.close();
-//                }
-//                if (connection != null) {
-//                    connection.close();
-//                }
-//            } catch (SQLException e) {
-//                e.printStackTrace();
-//            }
-//        }
         return resultSet;
     }
     
