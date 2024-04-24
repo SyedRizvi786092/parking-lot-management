@@ -81,4 +81,38 @@ public class Main {
         
         return vehicleCount;
     }
+    
+    public int getOpenSlots(String vType) {
+        int openSlots = 0;
+        try {
+            ParkingLotStatus pls = new ParkingLotStatus();
+            ResultSet rSet = pls.getAvailableSlots(vType);
+            while(rSet.next()) {
+                openSlots++;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return openSlots;
+    }
+    
+    public String getSlotsInfo(String vType, int flag) {
+        String slotsInfo = "";
+        try {
+            ParkingLotStatus pls = new ParkingLotStatus();
+            ResultSet rSet;
+            if(flag==1)
+                rSet = pls.getAvailableSlots(vType);
+            else
+                rSet = pls.getOccupiedSlots(vType);
+            while(rSet.next()) {
+                int fno = rSet.getInt("floorno");
+                int sno = rSet.getInt("slotno");
+                slotsInfo+="\n<li>Floor "+String.valueOf(fno)+", Slot "+String.valueOf(sno)+"</li>";
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return slotsInfo;
+    }
 }

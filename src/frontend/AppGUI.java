@@ -451,29 +451,18 @@ public class AppGUI extends javax.swing.JFrame {
         availSlotsPanel.add(vehicleTypeBox3, gridBagConstraints);
 
         availSlotsPanelJr.setPreferredSize(new java.awt.Dimension(110, 110));
+        availSlotsPanelJr.setLayout(new java.awt.GridBagLayout());
 
         availSlotsLabel.setText("The currently available slots will be displayed here :)");
-
-        javax.swing.GroupLayout availSlotsPanelJrLayout = new javax.swing.GroupLayout(availSlotsPanelJr);
-        availSlotsPanelJr.setLayout(availSlotsPanelJrLayout);
-        availSlotsPanelJrLayout.setHorizontalGroup(
-            availSlotsPanelJrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 569, Short.MAX_VALUE)
-            .addGroup(availSlotsPanelJrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(availSlotsPanelJrLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(availSlotsLabel)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        availSlotsPanelJrLayout.setVerticalGroup(
-            availSlotsPanelJrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 539, Short.MAX_VALUE)
-            .addGroup(availSlotsPanelJrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(availSlotsPanelJrLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(availSlotsLabel)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.weighty = 0.1;
+        gridBagConstraints.insets = new java.awt.Insets(20, 20, 0, 0);
+        availSlotsPanelJr.add(availSlotsLabel, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -517,28 +506,17 @@ public class AppGUI extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
         occSlotsPanel.add(vehicleTypeBox2, gridBagConstraints);
 
-        occSlotsLabel.setText("The currently occupied slots will be displayed here :)");
+        occSlotsPanelJr.setLayout(new java.awt.GridBagLayout());
 
-        javax.swing.GroupLayout occSlotsPanelJrLayout = new javax.swing.GroupLayout(occSlotsPanelJr);
-        occSlotsPanelJr.setLayout(occSlotsPanelJrLayout);
-        occSlotsPanelJrLayout.setHorizontalGroup(
-            occSlotsPanelJrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 397, Short.MAX_VALUE)
-            .addGroup(occSlotsPanelJrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(occSlotsPanelJrLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(occSlotsLabel)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        occSlotsPanelJrLayout.setVerticalGroup(
-            occSlotsPanelJrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 237, Short.MAX_VALUE)
-            .addGroup(occSlotsPanelJrLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(occSlotsPanelJrLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(occSlotsLabel)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+        occSlotsLabel.setText("The currently occupied slots will be displayed here :)");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.weighty = 0.1;
+        gridBagConstraints.insets = new java.awt.Insets(20, 20, 0, 0);
+        occSlotsPanelJr.add(occSlotsLabel, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -547,7 +525,7 @@ public class AppGUI extends javax.swing.JFrame {
         gridBagConstraints.gridheight = java.awt.GridBagConstraints.REMAINDER;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 0.1;
-        gridBagConstraints.weighty = 0.15;
+        gridBagConstraints.weighty = 0.95;
         gridBagConstraints.insets = new java.awt.Insets(0, 10, 10, 10);
         occSlotsPanel.add(occSlotsPanelJr, gridBagConstraints);
 
@@ -873,8 +851,10 @@ public class AppGUI extends javax.swing.JFrame {
     private void vehicleTypeBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vehicleTypeBox1ActionPerformed
         JComboBox cb = (JComboBox)evt.getSource();
         String vType = (String)cb.getSelectedItem();
-        if(vType.equals("Select Vehicle Type")==false)
-            openSlotsLabel.setText("Currently Open Slots for "+vType+": ");
+        if(!vType.equals("Select Vehicle Type")) {
+            Main m = new Main();
+            openSlotsLabel.setText("Currently Open Slots for "+vType+": "+m.getOpenSlots(vType));
+        }
     }//GEN-LAST:event_vehicleTypeBox1ActionPerformed
 
     private void helpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpButtonActionPerformed
@@ -888,8 +868,11 @@ public class AppGUI extends javax.swing.JFrame {
     private void vehicleTypeBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vehicleTypeBox2ActionPerformed
         JComboBox cb = (JComboBox)evt.getSource();
         String vType = (String)cb.getSelectedItem();
-        if(vType.equals("Select Vehicle Type")==false) {
+        if(!vType.equals("Select Vehicle Type")) {
+            Main m = new Main();
+            String occupiedSlots = m.getSlotsInfo(vType, 0);
             occSlotsPanelJr.setBorder(javax.swing.BorderFactory.createTitledBorder("Occupied "+vType+" Slots"));
+            occSlotsLabel.setText("<html>\n<ol>\n"+occupiedSlots+"\n</ol><br>\n<hr>");
             occSlotsPanelJr.setVisible(true);
         }
     }//GEN-LAST:event_vehicleTypeBox2ActionPerformed
@@ -897,8 +880,11 @@ public class AppGUI extends javax.swing.JFrame {
     private void vehicleTypeBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vehicleTypeBox3ActionPerformed
         JComboBox cb = (JComboBox)evt.getSource();
         String vType = (String)cb.getSelectedItem();
-        if(vType.equals("Select Vehicle Type")==false) {
+        if(!vType.equals("Select Vehicle Type")) {
+            Main m = new Main();
+            String availableSlots = m.getSlotsInfo(vType, 1);
             availSlotsPanelJr.setBorder(javax.swing.BorderFactory.createTitledBorder("Available "+vType+" Slots"));
+            availSlotsLabel.setText("<html>\n<ol>\n"+availableSlots+"\n</ol><br>\n<hr>");
             availSlotsPanelJr.setVisible(true);
         }
     }//GEN-LAST:event_vehicleTypeBox3ActionPerformed
