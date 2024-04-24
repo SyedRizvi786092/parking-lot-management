@@ -40,7 +40,11 @@ public class AppGUI extends javax.swing.JFrame {
         java.awt.GridBagConstraints gridBagConstraints;
 
         vehicleType = new javax.swing.ButtonGroup();
-        msgDialog = new javax.swing.JDialog();
+        parkDialog = new javax.swing.JDialog();
+        parkMsgLabel = new javax.swing.JLabel();
+        ticketIdText = new javax.swing.JTextField();
+        parkDialogOkButton = new javax.swing.JButton();
+        ticketIdLabel = new javax.swing.JLabel();
         loginPanel = new javax.swing.JPanel();
         loginBox = new javax.swing.JPanel();
         uNameLabel = new javax.swing.JLabel();
@@ -98,19 +102,56 @@ public class AppGUI extends javax.swing.JFrame {
         upcomingFeatures = new javax.swing.JPanel();
         aboutUs = new javax.swing.JPanel();
 
-        msgDialog.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        msgDialog.setTitle("MESSAGE");
+        parkDialog.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        parkDialog.setTitle("MESSAGE");
+        parkDialog.setModal(true);
+        parkDialog.setPreferredSize(new java.awt.Dimension(400, 250));
+        parkDialog.getContentPane().setLayout(new java.awt.GridBagLayout());
 
-        javax.swing.GroupLayout msgDialogLayout = new javax.swing.GroupLayout(msgDialog.getContentPane());
-        msgDialog.getContentPane().setLayout(msgDialogLayout);
-        msgDialogLayout.setHorizontalGroup(
-            msgDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        msgDialogLayout.setVerticalGroup(
-            msgDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        parkMsgLabel.setText("The vehicle has been successfully parked!");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = java.awt.GridBagConstraints.REMAINDER;
+        gridBagConstraints.insets = new java.awt.Insets(20, 0, 10, 0);
+        parkDialog.getContentPane().add(parkMsgLabel, gridBagConstraints);
+
+        ticketIdText.setEditable(false);
+        ticketIdText.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        ticketIdText.setPreferredSize(new java.awt.Dimension(128, 22));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = java.awt.GridBagConstraints.REMAINDER;
+        gridBagConstraints.gridheight = java.awt.GridBagConstraints.RELATIVE;
+        gridBagConstraints.insets = new java.awt.Insets(10, 5, 10, 10);
+        parkDialog.getContentPane().add(ticketIdText, gridBagConstraints);
+
+        parkDialogOkButton.setText("OK");
+        parkDialogOkButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        parkDialogOkButton.setPreferredSize(new java.awt.Dimension(60, 30));
+        parkDialogOkButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                parkDialogOkButtonActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = java.awt.GridBagConstraints.REMAINDER;
+        gridBagConstraints.gridheight = java.awt.GridBagConstraints.REMAINDER;
+        gridBagConstraints.insets = new java.awt.Insets(10, 0, 20, 0);
+        parkDialog.getContentPane().add(parkDialogOkButton, gridBagConstraints);
+
+        ticketIdLabel.setLabelFor(ticketIdText);
+        ticketIdLabel.setText("Ticket ID:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = java.awt.GridBagConstraints.RELATIVE;
+        gridBagConstraints.gridheight = java.awt.GridBagConstraints.RELATIVE;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 5);
+        parkDialog.getContentPane().add(ticketIdLabel, gridBagConstraints);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("PARK IT");
@@ -866,7 +907,11 @@ public class AppGUI extends javax.swing.JFrame {
         Main m = new Main();
         String ticketId = m.generateTicketId(vinText.getText(), getSelectedButtonText(vehicleType), (String)vehicleColorBox.getSelectedItem());
         if(!ticketId.equals("Full")) {
-            JOptionPane.showMessageDialog(this, "Your vehicle has been parked successfully!\nTicket ID: "+ticketId);
+//            JOptionPane.showMessageDialog(this, "Your vehicle has been parked successfully!\nTicket ID: "+ticketId);
+            ticketIdText.setText(ticketId);
+            parkDialog.setLocationRelativeTo(this);
+            parkDialog.pack();
+            parkDialog.setVisible(true);
         }
         else {
             JOptionPane.showMessageDialog(this, "Sorry, the "+getSelectedButtonText(vehicleType)+" slots are currently full!");
@@ -878,6 +923,10 @@ public class AppGUI extends javax.swing.JFrame {
         String msg = m.unPark(ticketText.getText());
         JOptionPane.showMessageDialog(this, msg);
     }//GEN-LAST:event_releaseConfirmButtonActionPerformed
+
+    private void parkDialogOkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_parkDialogOkButtonActionPerformed
+        parkDialog.dispose();
+    }//GEN-LAST:event_parkDialogOkButtonActionPerformed
     
     private String getSelectedButtonText(ButtonGroup buttonGroup) {
         for (Enumeration<AbstractButton> buttons = buttonGroup.getElements(); buttons.hasMoreElements();) {
@@ -958,7 +1007,6 @@ public class AppGUI extends javax.swing.JFrame {
     private javax.swing.JLabel loginPicLabel;
     private javax.swing.JLabel logoutLabel;
     private javax.swing.JPanel menuPanel;
-    private javax.swing.JDialog msgDialog;
     private javax.swing.JLabel occSlotsLabel;
     private javax.swing.JPanel occSlotsPanel;
     private javax.swing.JPanel occSlotsPanelJr;
@@ -966,7 +1014,10 @@ public class AppGUI extends javax.swing.JFrame {
     private javax.swing.JPanel openSlotsPanel;
     private javax.swing.JButton parkButton;
     private javax.swing.JButton parkConfirmButton;
+    private javax.swing.JDialog parkDialog;
+    private javax.swing.JButton parkDialogOkButton;
     private javax.swing.JLabel parkInsLabel;
+    private javax.swing.JLabel parkMsgLabel;
     private javax.swing.JPanel parkPanel;
     private javax.swing.JPanel parkingHelp;
     private javax.swing.JLabel pwLabel;
@@ -977,6 +1028,8 @@ public class AppGUI extends javax.swing.JFrame {
     private javax.swing.JPanel releasePanel;
     private javax.swing.JPanel releasingHelp;
     private javax.swing.JLabel setLabel;
+    private javax.swing.JLabel ticketIdLabel;
+    private javax.swing.JTextField ticketIdText;
     private javax.swing.JLabel ticketLabel;
     private javax.swing.JTextField ticketText;
     private javax.swing.JRadioButton truckRButton;
