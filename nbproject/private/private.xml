@@ -5,6 +5,9 @@
         <group>
             <file>file:/M:/Coding/Java/Minor%20Project/ParkingLotManagementSystem/src/frontend/AppGUI.java</file>
             <file>file:/M:/Coding/Java/Minor%20Project/ParkingLotManagementSystem/src/logic/ParkingLot.java</file>
+            <file>file:/M:/Coding/Java/Minor%20Project/ParkingLotManagementSystem/src/backend/Parking.java</file>
+            <file>file:/M:/Coding/Java/Minor%20Project/ParkingLotManagementSystem/src/backend/Releasing.java</file>
+            <file>file:/M:/Coding/Java/Minor%20Project/ParkingLotManagementSystem/src/logic/Main.java</file>
         </group>
     </open-files>
 </project-private>

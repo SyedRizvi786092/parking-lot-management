@@ -21,12 +21,8 @@ public class LoginAgent {
         ResultSet resultSet = null;
  
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            String url = "jdbc:mysql://localhost:3306/agents?zeroDateTimeBehavior=CONVERT_TO_NULL";
-            String user = "root";
-            String dbPassword = "smmh786";
- 
-            connection = DriverManager.getConnection(url, user, dbPassword);
+            ConnectDatabase cb = new ConnectDatabase();
+            connection = cb.connect();
  
             String sql = "SELECT * FROM agents.youngemployees WHERE username = ? AND password = ?";
             statement = connection.prepareStatement(sql);
@@ -39,10 +35,8 @@ public class LoginAgent {
  
         } catch (SQLException e) {
             e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
         }
-            finally {
+        finally {
             try {
                 if (resultSet != null) {
                     resultSet.close();
